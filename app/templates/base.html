@@ -1,0 +1,156 @@
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="static/favicon.png">
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.6/css/responsive.bootstrap4.min.css">
+    
+    <!-- Material Design Bootstrap -->
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/css/mdb.min.css" rel="stylesheet">-->
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/igv@2.7.4/dist/igv.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.2.6/js/responsive.bootstrap4.min.js"></script>
+   <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"> -->
+  
+    <!-- Nomes per taules -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedheader/3.1.6/css/fixedHeader.dataTables.min.css">  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+            
+    <title>IDIBGI</title>
+
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <!-- JAVASCRIPT -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+    <!-- BUNDLE -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+    <!-- SEPARATE -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+    
+    </head>
+
+    <body>    
+        <!-- Barra de Navegació -->
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <a class="nav-link" href="/seleccionar_arxiu" style="color: white; font-size: medium;">REPORTS</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav">
+                <!-- {% if rol != None %} -->
+                    <li class="nav-item dropdown" >
+                     <!--   {% if nomesUnRol == 'NO' %} -->
+                            <a class="btn btn-secondary mr-1" style="color:white; font-size: medium;" id="navbarDarkDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-tag"></i> {{rol}} <i class="fas fa-long-arrow-alt-down fa-xs"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                        <!--   {% for row2 in llistaRolsDefinitiva %} -->
+                            <!-- {% if row2 == 'peticions' and row2 != rol %} -->
+                                <a class="dropdown-item" href="/seleccionar_arxiu">Peticions</a>
+                            <!-- {% endif %} -->
+                            <!-- {% if row2 == 'tecnic laboratori' and row2 != rol %} -->
+                                <a class="dropdown-item" href="/seleccionar_arxiu">Tecnic Laboratori</a>
+                            <!-- {% endif %} -->
+                            <!-- {% if row2 == 'admin' and row2 != rol %} -->
+                                <a class="dropdown-item" href="/seleccionar_arxiu">Admin</a>
+                            <!-- {% endif %} -->
+                            <!-- {% if row2 == 'Atencio al client' and row2 != rol %} -->
+                                <a class="dropdown-item" href="/seleccionar_arxiu">Atencio al client</a>
+                            <!-- {% endif %} -->
+                            <!-- {% if row2 == 'Expert laboratori' and row2 != rol %} -->
+                                <a class="dropdown-item" href="/seleccionar_arxiu">Expert Laboratori</a>
+                            <!-- {% endif %} -->
+                        <!-- {% endfor %} -->
+                            </ul> 
+                        <!-- {% endif %} -->
+                        <!-- {% if nomesUnRol == 'SI' %} -->
+                            <a class="btn btn-secondary mr-3 nav-link" style="color:white;" id="navbarDarkDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: medium;"><i class="fas fa-filter fa-xs"></i> {{rol}}</a>
+                        <!-- {% endif%} -->
+                    </li>
+                <!-- {% endif %} -->
+                <!-- {% if rol == 'admin' %} -->
+                    <li class="nav-item active " style="border: 1px;border-color:white;">
+                        <a class="nav-link" href="/seleccionar_arxiu" style="font-size: medium;"><i class="fas fa-user-plus"></i> Registre Client</a>
+                    </li>
+                    <!-- {% if usuarisPendents == 'SI'%} -->
+                        <li class="nav-item active ">
+                            <a class="nav-link" href="/seleccionar_arxiu" style="font-size: medium;"><i class="far fa-registered"></i>  Verificació Usuari  <i class="fas fa-exclamation-circle" style="color: red; font-size: large;"></i></i></a>
+                        </li>
+                    <!-- {% else %} -->
+                        <li class="nav-item active " style="border: 1px;border-color:white;">
+                            <a class="nav-link" href="/seleccionar_arxiu" style="font-size: medium;"><i class="far fa-registered"></i>  Add Primer</a>
+                        </li>
+                    <!-- {% endif %} -->
+                    <li class="nav-item active " style="border: 1px;border-color:white;">
+                        <a class="nav-link" href="/seleccionar_arxiu" style="font-size: medium;"><i class="fas fa-cog"></i> Configuració</a>
+                    </li>
+                    <!-- <li class="nav-item active " style="border: 1px;border-color:white;">
+                        <a class="nav-link" href="gestionarMostraLipid" style="font-size: medium;"><i class="fas fa-cog"></i>  Lipid</a>
+                    </li>
+                    <li class="nav-item active " style="border: 1px;border-color:white;">
+                        <a class="nav-link" href="gestionarMostraSudd" style="font-size: medium;"><i class="fas fa-cog"></i>  Sudd</a>
+                    </li>
+                    <li class="nav-item active " style="border: 1px;border-color:white;">
+                        <a class="nav-link" href="gestionarMostraPreResultat" style="font-size: medium;"><i class="fas fa-cog"></i> PreResultat</a>
+                    </li> -->
+                    <li class="nav-item active " style="border: 1px;border-color:white;">
+                        <a class="nav-link" href="/seleccionar_arxiu" style="font-size: medium;"><i class="fas fa-plus-circle fa-xs"></i>  Petico Massiva</a>
+                    </li>
+                    <li class="nav-item active " style="border: 1px;border-color:white;">
+                        <a class="nav-link" href="/seleccionar_arxiu" style="font-size: medium;"><i class="fas fa-plus-circle fa-xs"></i>  Peticio Admin</a>
+                    </li>
+                <!-- {% endif %} -->
+                <!-- {% if rol == 'Expert laboratori' %} -->
+                    <li class="nav-item active " style="border: 1px;border-color:white;">
+                        <a class="nav-link" href="/seleccionar_arxiu" style="font-size: medium;"><i class="fas fa-plus-circle fa-xs"></i>  Petico Massiva</a>
+                    </li>
+                <!-- {% endif %} -->
+            </ul>
+        </div>
+        <div>
+            <!-- {% if user == None %} -->
+                <a class="btn btn-secondary mr-1" style="color:white; font-size: medium; display: inline;" href='loginClient'><i class="fas fa-id-card fa-sm"></i> Identificació</a>             
+                <a class="nav-link" title="homePrincipal " href="/seleccionar_arxiu" style="color:white; font-size: medium; display: inline;"><i class="fas fa-home"></i> Home</a>
+            <!-- {% else %} -->
+                <a class="nav-link" style="color: white; font-size: medium; display: inline;" title="User"><i class="fas fa-user fa"></i> Usuari: {{user}}</a>
+                <a class="btn btn-secondary mr-1" style="color:white; display: inline;" onclick="mensaje('deslogeado')"><i class="fas fa-door-closed fa-sm"></i> Tanca sessió</a>
+                <a class="nav-link" title="homePrincipal " href="/seleccionar_arxiu" style="color:white; display: inline;"><i class="fas fa-home"></i> Home</a>
+            <!-- {% endif %} -->
+        </div>
+        </nav>
+    <hr>
+        {% block content %}{% endblock %}
+        
+        <!-- Segon Footer -->
+        <footer>
+            <h6 style="text-align: center; font-size: x-small;">&#8284; CopyRight &#169;</h6>
+        </footer>
+    </body>
+</html>
