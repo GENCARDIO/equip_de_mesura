@@ -26,4 +26,4 @@ def seleccionar_arxiu():
     :rtype: render_template
     """
 
-    return render_template("seleccionar_arxiu.html")
+    return render_template("index.html")
