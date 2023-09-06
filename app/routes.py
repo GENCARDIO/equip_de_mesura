@@ -30,7 +30,8 @@ def inici():
     :rtype: render_template
     """
     # Redirecciona al html
-    return render_template("index.html")
+    # return render_template("index.html")
+    return render_template("seleccionar_arxiu.html")
 
 
 # Ruta per seleccionar les files de les mostres
