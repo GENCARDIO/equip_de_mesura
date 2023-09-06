@@ -10,8 +10,12 @@ main_dir = os.path.dirname(os.path.abspath(__file__))
 # URL_HOME = "http://172.16.83.23:5000"
 # URL_GLOBAL = "http://172.16.83.23:8000/api_fastq/"
 
-# Develop
-URL_HOME = "http://172.16.82.47:5000"
+# Develop Adria
+# URL_HOME = "http://172.16.82.47:5000"
+# URL_GLOBAL = "http://172.16.82.47:8000/api_fastq/"
+
+# Develop Alex
+URL_HOME = "http://172.16.82.45:5000"
 # URL_GLOBAL = "http://172.16.82.45:8000/api_fastq/"
 
 
