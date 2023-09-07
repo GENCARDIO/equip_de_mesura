@@ -181,6 +181,43 @@
         </div>
       </div>
 
+      <div class="col-12">
+        <div class="card card-body border-1 m-1" style="background-color:#EDEDED; text-align: center;">
+          <div class="col-12">
+            <p style="margin-bottom: 10px; font-weight: bold;">Informació compra</p>
+            <table class="table table-bordered">
+              <thead style="text-align: center; font-size: 12;">
+                <tr>
+                  <th>Amplada (cm)</th>
+                  <th>Alçada (cm)</th>
+                  <th>Profunditat (cm)</th>
+                  <th>Pes (Kg)</th>
+                  <th>Volum (L)</th>
+                  <th>Condicions ambientals</th>
+                  <th>Humitat</th>
+                  <th>Presa d'aigua desionitzada</th>
+                  <th><i class="fa-solid fa-image"></i></th>
+                </tr>
+              </thead>
+              <tbody style="font-size: 12;">
+                <tr>
+                  <td>23</td>
+                  <td>23</td>
+                  <td>23</td>
+                  <td>23</td>
+                  <td>23</td>
+                  <td>Prova</td>
+                  <td>Prova</td>
+                  <td>Prova</td>
+                  <td class="popup-button" id="showPopup3" style="text-align: center; text-decoration: underline blue;">
+                    IMG</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
       <!-- Popup 1 para la imagen -->
       <div class="popup" id="imagePopup">
         <div class="popup-content">
@@ -196,6 +233,15 @@
           <span class="popup-close" id="closePopup2">&times;</span>
           <input type="file" id="imageInput2">
           <img src="" alt="Imagen Cargada" id="uploadedImage2" style="display: none;">
+        </div>
+      </div>
+
+      <!-- Popup 3 para la imagen -->
+      <div class="popup" id="imagePopup3">
+        <div class="popup-content">
+          <span class="popup-close" id="closePopup3">&times;</span>
+          <input type="file" id="imageInput3">
+          <img src="" alt="Imagen Cargada" id="uploadedImage3" style="display: none;">
         </div>
       </div>
 
@@ -250,8 +296,6 @@
       }
     });
 
-
-
     const showPopupButton2 = document.getElementById('showPopup2');
     const imagePopup2 = document.getElementById('imagePopup2');
     const closePopupButton2 = document.getElementById('closePopup2');
@@ -295,6 +339,53 @@
         uploadedImage2.style.display = 'block';
         imageUploadedText2.style.display = 'block';
         imageInput2.style.display = 'none';
+      }
+    });
+
+
+    const showPopupButton3 = document.getElementById('showPopup3');
+    const imagePopup3 = document.getElementById('imagePopup3');
+    const closePopupButton3 = document.getElementById('closePopup3');
+    const imageInput3 = document.getElementById('imageInput3');
+    const uploadedImage3 = document.getElementById('uploadedImage3');
+    const imageUploadedText3 = document.getElementById('imageUploadedText3');
+
+    showPopupButton3.addEventListener('click', () => {
+      imagePopup3.style.display = 'block';
+    });
+
+    closePopupButton3.addEventListener('click', () => {
+      imagePopup3.style.display = 'none';
+    });
+
+    imageInput3.addEventListener('change', () => {
+      const file = imageInput3.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          uploadedImage3.src = e.target.result;
+          uploadedImage3.style.display = 'block';
+          imageUploadedText3.style.display = 'block';
+          imageInput3.style.display = 'none';
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Almacenar la imagen en el navegador localmente
+    window.addEventListener('beforeunload', () => {
+      const imgSrc = uploadedImage3.src;
+      localStorage.setItem('uploadedImage3', imgSrc);
+    });
+
+    // Recuperar la imagen almacenada localmente al cargar la página
+    window.addEventListener('load', () => {
+      const imgSrc = localStorage.getItem('uploadedImage3');
+      if (imgSrc) {
+        uploadedImage3.src = imgSrc;
+        uploadedImage3.style.display = 'block';
+        imageUploadedText3.style.display = 'block';
+        imageInput3.style.display = 'none';
       }
     });
 
