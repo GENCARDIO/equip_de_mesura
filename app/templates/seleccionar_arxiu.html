@@ -139,7 +139,7 @@
                   <td>Prova</td>
                   <td>Prova</td>
                   <td>666666666</td>
-                  <td class="popup-button" id="showPopup" style="text-align: center; text-decoration: underline blue;">
+                  <td class="popup-button" id="showPopup1" style="text-align: center; text-decoration: underline blue;">
                     IMG</td>
                 </tr>
               </tbody>
@@ -148,7 +148,40 @@
         </div>
       </div>
 
-      <!-- Popup para la imagen -->
+      <div class="col-12">
+        <div class="card card-body border-1 m-1" style="background-color:#EDEDED; text-align: center;">
+          <div class="col-12">
+            <p style="margin-bottom: 10px; font-weight: bold;">Informació compra</p>
+            <table class="table table-bordered">
+              <thead style="text-align: center; font-size: 12;">
+                <tr>
+                  <th>DATA ALTA</th>
+                  <th>Condicions</th>
+                  <th>Data Baixa</th>
+                  <th>SITUACIÓ CONTRACTUAL</th>
+                  <th>PREU</th>
+                  <th>TIPUS D'EQUIP</th>
+                  <th><i class="fa-solid fa-image"></i></th>
+                </tr>
+              </thead>
+              <tbody style="font-size: 12;">
+                <tr>
+                  <td>23/12/23</td>
+                  <td>Excel·lent</td>
+                  <td>24/12/23</td>
+                  <td>Prova</td>
+                  <td>99,99 €</td>
+                  <td>Prova</td>
+                  <td class="popup-button" id="showPopup2" style="text-align: center; text-decoration: underline blue;">
+                    IMG</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Popup 1 para la imagen -->
       <div class="popup" id="imagePopup">
         <div class="popup-content">
           <span class="popup-close" id="closePopup">&times;</span>
@@ -157,12 +190,21 @@
         </div>
       </div>
 
+      <!-- Popup 2 para la imagen -->
+      <div class="popup" id="imagePopup2">
+        <div class="popup-content">
+          <span class="popup-close" id="closePopup2">&times;</span>
+          <input type="file" id="imageInput2">
+          <img src="" alt="Imagen Cargada" id="uploadedImage2" style="display: none;">
+        </div>
+      </div>
+
     </div>
   </div>
 
   <script>
 
-    const showPopupButton = document.getElementById('showPopup');
+    const showPopupButton = document.getElementById('showPopup1');
     const imagePopup = document.getElementById('imagePopup');
     const closePopupButton = document.getElementById('closePopup');
     const imageInput = document.getElementById('imageInput');
@@ -205,6 +247,54 @@
         uploadedImage.style.display = 'block';
         imageUploadedText.style.display = 'block';
         imageInput.style.display = 'none';
+      }
+    });
+
+
+
+    const showPopupButton2 = document.getElementById('showPopup2');
+    const imagePopup2 = document.getElementById('imagePopup2');
+    const closePopupButton2 = document.getElementById('closePopup2');
+    const imageInput2 = document.getElementById('imageInput2');
+    const uploadedImage2 = document.getElementById('uploadedImage2');
+    const imageUploadedText2 = document.getElementById('imageUploadedText2');
+
+    showPopupButton2.addEventListener('click', () => {
+      imagePopup2.style.display = 'block';
+    });
+
+    closePopupButton2.addEventListener('click', () => {
+      imagePopup2.style.display = 'none';
+    });
+
+    imageInput2.addEventListener('change', () => {
+      const file = imageInput2.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          uploadedImage2.src = e.target.result;
+          uploadedImage2.style.display = 'block';
+          imageUploadedText2.style.display = 'block';
+          imageInput2.style.display = 'none';
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Almacenar la imagen en el navegador localmente
+    window.addEventListener('beforeunload', () => {
+      const imgSrc = uploadedImage2.src;
+      localStorage.setItem('uploadedImage2', imgSrc);
+    });
+
+    // Recuperar la imagen almacenada localmente al cargar la página
+    window.addEventListener('load', () => {
+      const imgSrc = localStorage.getItem('uploadedImage2');
+      if (imgSrc) {
+        uploadedImage2.src = imgSrc;
+        uploadedImage2.style.display = 'block';
+        imageUploadedText2.style.display = 'block';
+        imageInput2.style.display = 'none';
       }
     });
 
