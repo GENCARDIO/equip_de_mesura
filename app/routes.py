@@ -2,6 +2,7 @@ from flask import render_template, request, flash, redirect, send_file, session
 from config import URL_HOME
 from app import app
 from app import utils
+from app import models
 import jwt
 from functools import wraps
 
@@ -30,8 +31,9 @@ def inici():
     :rtype: render_template
     """
     # Redirecciona al html
-    # return render_template("index.html")
-    return render_template("seleccionar_arxiu.html")
+
+    equips = models.session.query(models.Fitxes).all()
+    return render_template("main.html", equips=equips)
 
 
 # Ruta per seleccionar les files de les mostres
@@ -43,7 +45,10 @@ def seleccionar_arxiu():
     :returns: Retorna l'html corresponent.
     :rtype: render_template
     """
-    return render_template("seleccionar_arxiu.html")
+
+    equip = request.form['opcions']
+    dades = models.session.query(models.Fitxes).filter(models.Fitxes.codi_aux == equip).first()
+    return render_template("seleccionar_arxiu.html", dades=dades)
 
 
 # Route to go Home

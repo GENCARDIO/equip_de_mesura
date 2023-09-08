@@ -88,7 +88,7 @@
   </div>
 
 
-  <div class="flex" style="width:70%;margin:0 auto; margin-bottom: 20px;">
+  <div class="flex" style="width:73%;margin:0 auto; margin-bottom: 20px;">
 
     <div class="row">
 
@@ -96,7 +96,7 @@
       <div class="col-12">
         <h1 class="card-title" style="margin-top:30px;color:rgb(252, 198, 100); text-align: center;">
           <div style="display:inline-block;"><b>FITXA TÈCNICA EQUIP DE MESURA</b></div>
-          <div style="display:inline-block; color:#636261">CODI AUX-DM085</div>
+          <div style="display:inline-block; color:#636261">CODI {{dades.codi_aux}}</div>
         </h1>
       </div>
 
@@ -107,7 +107,7 @@
         <div class="card card-body border-1 m-1" style="background-color:#EDEDED; text-align: center;">
           <div class="col-12">
             <p style="margin-bottom: 5px; font-weight: bold;">Descripció</p>
-            <p style="margin-bottom: 0;">Congelador petit verd</p>
+            <input type="text" value="{{dades.descripcio}}">
           </div>
         </div>
       </div>
@@ -119,9 +119,10 @@
         <div class="card card-body border-1 m-1" style="background-color:#EDEDED; text-align: center;">
           <div class="col-12">
             <p style="margin-bottom: 10px; font-weight: bold;">Caracteristiques generals</p>
-            <table class="table table-bordered">
+            <table class="table table-bordered" style="width: auto;">
               <thead style="text-align: center; font-size: 12;">
                 <tr style="background-color: rgb(174, 204, 231);">
+                  <th>FABRICANT</th>
                   <th>REFERÈNCIA FABRICANT</th>
                   <th>SERIAL NUMBER</th>
                   <th>MODEL</th>
@@ -133,12 +134,13 @@
               </thead>
               <tbody style="font-size: 12;">
                 <tr>
-                  <td>Prova</td>
-                  <td>REFXXXXXXXXX</td>
-                  <td>123456789</td>
-                  <td>Prova</td>
-                  <td>Prova</td>
-                  <td>666666666</td>
+                  <td><input type="text" value="{{dades.fabricant}}"></td>
+                  <td><input type="text" value="{{dades.ref_fabricant}}"></td>
+                  <td><input type="text" value="{{dades.serial_number}}"></td>
+                  <td><input type="text" value="{{dades.model}}"></td>
+                  <td><input type="text" value="{{dades.emp_subministradora}}"></td>
+                  <td><input type="text" value="XXXXXXXXX"></td>
+                  <td><input type="text" value="666666666"></td>
                   <td class="popup-button" id="showPopup1" style="text-align: center; text-decoration: underline blue;">
                     IMG</td>
                 </tr>
@@ -167,12 +169,12 @@
               </thead>
               <tbody style="font-size: 12;">
                 <tr>
-                  <td>23/12/23</td>
-                  <td>Excel·lent</td>
-                  <td>24/12/23</td>
-                  <td>Prova</td>
-                  <td>99,99 €</td>
-                  <td>Prova</td>
+                  <td><input type="text" value="{{dades.data_alta}}"></td>
+                  <td><input type="text" value="{{dades.condicions_equip}}"></td>
+                  <td><input type="text" value="{{dades.data_baixa}}"></td>
+                  <td><input type="text" value="{{dades.situacio_contractual}}"></td>
+                  <td><input type="text" value="{{dades.preu}}"></td>
+                  <td><input type="text" value="{{dades.tipus}}"></td>
                   <td class="popup-button" id="showPopup2" style="text-align: center; text-decoration: underline blue;">
                     IMG</td>
                 </tr>
@@ -193,7 +195,7 @@
                   <th>Amplada (cm)</th>
                   <th>Alçada (cm)</th>
                   <th>Profunditat (cm)</th>
-                  <th>Pes (Kg)</th>
+                  <th style="width: 50px;">Pes (Kg)</th>
                   <th>Volum (L)</th>
                   <th>Condicions ambientals</th>
                   <th>Humitat</th>
@@ -203,14 +205,14 @@
               </thead>
               <tbody style="font-size: 12;">
                 <tr>
-                  <td>23</td>
-                  <td>23</td>
-                  <td>23</td>
-                  <td>23</td>
-                  <td>23</td>
-                  <td>Prova</td>
-                  <td>Prova</td>
-                  <td>Prova</td>
+                  <td><input type="text" value="{{dades.amplada}}"></td>
+                  <td><input type="text" value="{{dades.alçada}}"></td>
+                  <td><input type="text" value="{{dades.profunditat}}"></td>
+                  <td><input type="text" value="{{dades.pes}}"></td>
+                  <td><input type="text" value="None"></td>
+                  <td><input type="text" value="{{dades.condicions_ambientals}}"></td>
+                  <td><input type="text" value="{{dades.humitat}}"></td>
+                  <td><input type="text" value="{{dades.presa_aigua}}"></td>
                   <td class="popup-button" id="showPopup3" style="text-align: center; text-decoration: underline blue;">
                     IMG</td>
                 </tr>
@@ -238,38 +240,38 @@
                 </tr>
                 <tr>
                   <td>Pantalla</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td><input type="text" value=""></td>
+                  <td><input type="text" value=""></td>
+                  <td><input type="text" value=""></td>
+                  <td><input type="text" value=""></td>
                 </tr>
                 <tr>
                   <td>SAI</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td><input type="text" value=""></td>
+                  <td><input type="text" value=""></td>
+                  <td><input type="text" value=""></td>
+                  <td><input type="text" value=""></td>
                 </tr>
                 <tr>
                   <td>Lector código de barras</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td><input type="text" value=""></td>
+                  <td><input type="text" value=""></td>
+                  <td><input type="text" value=""></td>
+                  <td><input type="text" value=""></td>
                 </tr>
                 <tr>
                   <td>Impresora</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td><input type="text" value=""></td>
+                  <td><input type="text" value=""></td>
+                  <td><input type="text" value=""></td>
+                  <td><input type="text" value=""></td>
                 </tr>
                 <tr>
                   <td>Tensión: 220V/50Hz <br> Potencia: 220W</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td><input type="text" value=""></td>
+                  <td><input type="text" value=""></td>
+                  <td><input type="text" value=""></td>
+                  <td><input type="text" value=""></td>
                 </tr>
                 <tr>
                   <td></td>
@@ -280,23 +282,23 @@
                 </tr>
                 <tr>
                   <td>Software</td>
-                  <td></td>
+                  <td><input type="text" value=""></td>
                   <td>Versió</td>
-                  <td></td>
+                  <td colspan="2"><input type="text" value=""></td>
                   <td></td>
                 </tr>
                 <tr>
                   <td>Software</td>
-                  <td></td>
+                  <td><input type="text" value=""></td>
                   <td>Versió</td>
-                  <td></td>
+                  <td colspan="2"><input type="text" value=""></td>
                   <td></td>
                 </tr>
                 <tr>
                   <td>Software</td>
-                  <td></td>
+                  <td><input type="text" value=""></td>
                   <td>Versió</td>
-                  <td></td>
+                  <td colspan="2"><input type="text" value=""></td>
                   <td></td>
                 </tr>
               </thead>
@@ -317,14 +319,14 @@
                   <th style="width: 50%;">PERSONAL FACULTATIU</th>
                 </tr>
               </thead>
-              <tbody style="font-size: 12;">
+              <tbody style="font-size: 12; text-align: center;">
                 <tr>
                   <td>PERSONAL TECNIC UDMMP</td>
                   <td>Facultatius responsables de l'àrea UDMMP</td>
                 </tr>
                 <tr>
-                  <td></td>
-                  <td></td>
+                  <td><input type="text" value=""></td>
+                  <td><input type="text" value=""></td>
                 </tr>
               </tbody>
             </table>
@@ -344,14 +346,14 @@
                   <th style="width: 50%;">Descripcio</th>
                 </tr>
               </thead>
-              <tbody style="font-size: 12;">
+              <tbody style="font-size: 12; text-align: center;">
                 <tr>
-                  <td></td>
-                  <td></td>
+                  <td><input type="text" value=""></td>
+                  <td><input type="text" value=""></td>
                 </tr>
                 <tr>
-                  <td></td>
-                  <td></td>
+                  <td><input type="text" value=""></td>
+                  <td><input type="text" value=""></td>
                 </tr>
               </tbody>
             </table>
@@ -371,12 +373,12 @@
                   <th style="width: 100%; background-color: rgb(174, 204, 231);">DOCUMENTS ASSAIGS D’ACCEPTACIÓ</th>
                 </tr>
               </thead>
-              <tbody style="font-size: 12;">
+              <tbody style="font-size: 12; text-align: center;">
                 <tr>
-                  <td></td>
+                  <td><input type="text" value=""></td>
                 </tr>
                 <tr>
-                  <td></td>
+                  <td><input type="text" value=""></td>
                 </tr>
               </tbody>
             </table>
@@ -393,31 +395,31 @@
               <tbody style="font-size: 12;">
                 <tr>
                   <td>Contracte de Manteniment</td>
-                  <td></td>
+                  <td><input type="text" value=""></td>
                 </tr>
                 <tr>
                   <td>Manteniment Preventiu Extern</td>
-                  <td></td>
+                  <td><input type="text" value=""></td>
                 </tr>
                 <tr>
                   <td>Manteniment preventiu Intern</td>
-                  <td></td>
+                  <td><input type="text" value=""></td>
                 </tr>
                 <tr>
                   <td>Verificació Interna</td>
-                  <td></td>
+                  <td><input type="text" value=""></td>
                 </tr>
                 <tr>
                   <td>Verificació Externa</td>
-                  <td></td>
+                  <td><input type="text" value=""></td>
                 </tr>
                 <tr>
                   <td>Calibració Externa</td>
-                  <td></td>
+                  <td><input type="text" value=""></td>
                 </tr>
                 <tr>
                   <td>Calibració interna</td>
-                  <td></td>
+                  <td><input type="text" value=""></td>
                 </tr>
               </tbody>
             </table>
@@ -429,6 +431,7 @@
             </p>
 
             <p style="margin-bottom: 10px; text-align: left; font-size: 15px;">Nom del contracte:
+              <input type="text" value="">
             </p>
 
             <table class="table table-bordered">
@@ -439,16 +442,16 @@
                   <th>Dades de contacte (Mail/telèfon)</th>
                 </tr>
               </thead>
-              <tbody style="font-size: 12;">
+              <tbody style="font-size: 12; text-align: center;">
                 <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td><input type="text" value=""></td>
+                  <td><input type="text" value=""></td>
+                  <td><input type="text" value=""></td>
                 </tr>
                 <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td><input type="text" value=""></td>
+                  <td><input type="text" value=""></td>
+                  <td><input type="text" value=""></td>
                 </tr>
               </tbody>
             </table>
@@ -467,11 +470,11 @@
                   <th>Dades de contacte (Mail/telèfon)</th>
                 </tr>
               </thead>
-              <tbody style="font-size: 12;">
+              <tbody style="font-size: 12; text-align: center;">
                 <tr>
-                  <td>Lifetechnologies</td>
-                  <td>Cada 3 anys</td>
-                  <td>life@technologies 654654654</td>
+                  <td><input type="text" value="Lifetechnologies"></td>
+                  <td><input type="text" value="Cada 3 anys"></td>
+                  <td><input type="text" value="life@technologies / 654654654"></td>
                 </tr>
                 <tr>
               </tbody>
@@ -481,15 +484,15 @@
               <thead style="text-align: center; font-size: 12;">
                 <tr>
                   <th>Mateniment</th>
-                  <th></th>
+                  <th><input type="text" style="text-align: center; font-weight: bold;" value=""></th>
                 </tr>
                 <tr>
                   <th>Verificació</th>
-                  <th></th>
+                  <th><input type="text" style="text-align: center; font-weight: bold;" value=""></th>
                 </tr>
                 <tr>
                   <th>Calibratge</th>
-                  <th>X</th>
+                  <th><input type="text" style="text-align: center; font-weight: bold;" value="X"></th>
                 </tr>
               </thead>
             </table>
@@ -498,6 +501,7 @@
             </p>
 
             <p style="margin-bottom: 10px; text-align: left; font-size: 15px;">Marges d’acceptació:
+              <input type="text" value="">
             </p>
 
             <br>
@@ -507,12 +511,15 @@
             </p>
 
             <p style="margin-bottom: 10px; text-align: left; font-size: 15px;">Descripció:
+              <input type="text" value="">
             </p>
 
             <p style="margin-bottom: 10px; text-align: left; font-size: 15px;">Periodicitat:
+              <input type="text" value="">
             </p>
 
             <p style="margin-bottom: 10px; text-align: left; font-size: 15px;">Marges d'acceptació:
+              <input type="text" value="">
             </p>
 
             <br>
@@ -522,12 +529,15 @@
             </p>
 
             <p style="margin-bottom: 10px; text-align: left; font-size: 15px;">Descripció:
+              <input type="text" value="">
             </p>
 
             <p style="margin-bottom: 10px; text-align: left; font-size: 15px;">Periodicitat:
+              <input type="text" value="">
             </p>
 
             <p style="margin-bottom: 10px; text-align: left; font-size: 15px;">Marges d'acceptació:
+              <input type="text" value="">
             </p>
 
             <br>
@@ -537,12 +547,15 @@
             </p>
 
             <p style="margin-bottom: 10px; text-align: left; font-size: 15px;">Descripció:
+              <input type="text" value="">
             </p>
 
             <p style="margin-bottom: 10px; text-align: left; font-size: 15px;">Periodicitat:
+              <input type="text" value="">
             </p>
 
             <p style="margin-bottom: 10px; text-align: left; font-size: 15px;">Marges d'acceptació:
+              <input type="text" value="">
             </p>
 
           </div>

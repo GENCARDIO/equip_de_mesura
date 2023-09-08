@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitxes Tecniques - Equipss de Mesura</title>
+</head>
+
+<body>
+    <!-- Mensajes Flash -->
+    <div class="container mt-3">
+        <div class="row justify-content-center">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Cerrar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+
+    <div class="container" style="width: 50%; margin: 0 auto; margin-bottom: 20px;">
+        <div class="row">
+            <!-- Título -->
+            <div class="col-12">
+                <h1 class="text-center" style="margin-top: 30px; color: #fcc664; font-weight: bold;">
+                    EQUIPS DE MESURA
+                </h1>
+                <hr>
+            </div>
+
+            <!-- Seleccionar equipo -->
+            <div class="col-12">
+                <div class="card card-body border-1 m-1" style="background-color:#EDEDED; text-align: center;">
+                    <div class="card-body text-center">
+                        <h6 class="card-title font-weight-bold">Selecciona un equip</h6>
+                        <form action="/seleccionar_arxiu" method="post">
+                            <select class="custom-select" id="opcions" name="opcions" style="width: 50%;">
+                                {% for equip in equips %}
+                                <option value="{{ equip.codi_aux }}">{{ equip.codi_aux }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                            <br>
+                            <input style="margin-top: 20px; margin-right: 40px;" type="submit" class="btn btn-success"
+                                value="Enviar">
+                            <button style="margin-top: 20px;" class="btn btn-primary" onclick="">Afegir equip</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+{% endblock content %}
