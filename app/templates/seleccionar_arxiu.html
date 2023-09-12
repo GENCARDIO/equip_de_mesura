@@ -318,7 +318,7 @@
         <div class="card card-body border-1 m-1" style="background-color:#EDEDED; text-align: center;">
           <div class="col-12">
             <p style="margin-bottom: 10px; font-weight: bold;">Personal responsable</p>
-            <table class="table table-bordered">
+            <table class="table table-bordered" id="miTabla">
               <thead style="text-align: center; font-size: 12;">
                 <tr>
                   <th style="width: 50%;">PERSONAL TECNIC</th>
@@ -345,7 +345,7 @@
         <div class="card card-body border-1 m-1" style="background-color:#EDEDED; text-align: center;">
           <div class="col-12">
             <p style="margin-bottom: 10px; font-weight: bold;">Fungible</p>
-            <table class="table table-bordered">
+            <table class="table table-bordered" id="miTabla2">
               <thead style="text-align: center; font-size: 12;">
                 <tr>
                   <th style="width: 50%;">Referencia</th>
@@ -609,7 +609,63 @@
     window.addEventListener('load', () => mostrarImagen(input2, imagenMostrada2));
     window.addEventListener('load', () => mostrarImagen(input3, imagenMostrada3));
 
+    // Afegir cel·la 'personal responsable'
+    document.addEventListener("DOMContentLoaded", function () {
+      var tabla = document.getElementById("miTabla");
+
+      tabla.addEventListener("click", function (event) {
+        // Verificar si se hizo clic en la última fila
+        if (event.target.parentNode.parentNode === tabla.lastElementChild) {
+          // Crear una nueva fila
+          var nuevaFila = document.createElement("tr");
+
+          // Agregar celdas a la nueva fila
+          for (var i = 0; i < 2; i++) {
+            var nuevaCelda = document.createElement("td");
+            var nuevoInput = document.createElement("input");
+            nuevoInput.setAttribute("type", "text");
+            nuevoInput.style.width = "300px";
+            nuevaCelda.appendChild(nuevoInput);
+            nuevaFila.appendChild(nuevaCelda);
+          }
+
+          // Agregar la nueva fila al final de la tabla
+          tabla.lastElementChild.appendChild(nuevaFila);
+        }
+      });
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      var tabla = document.getElementById("miTabla2");
+
+      tabla.addEventListener("click", function (event) {
+        // Verificar si se hizo clic en la última fila
+        if (event.target.parentNode.parentNode === tabla.lastElementChild) {
+          // Crear una nueva fila
+          var nuevaFila = document.createElement("tr");
+
+          // Agregar celdas a la nueva fila
+          for (var i = 0; i < 2; i++) {
+            var nuevaCelda = document.createElement("td");
+            var nuevoInput = document.createElement("input");
+            nuevoInput.setAttribute("type", "text");
+            nuevoInput.style.width = "300px";
+            nuevaCelda.appendChild(nuevoInput);
+            nuevaFila.appendChild(nuevaCelda);
+          }
+
+          // Agregar la nueva fila al final de la tabla
+          tabla.lastElementChild.appendChild(nuevaFila);
+        }
+      });
+    });
+
   </script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 
 </body>
 {% endblock content %}
