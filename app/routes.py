@@ -1,8 +1,10 @@
-from flask import render_template, request, flash, redirect, send_file, session
+from flask import render_template, request, flash, redirect, send_file, session, jsonify
 from config import URL_HOME
 from app import app
 from app import utils
 from app import models
+import os
+import uuid
 import jwt
 from functools import wraps
 
@@ -49,6 +51,19 @@ def seleccionar_arxiu():
     equip = request.form['opcions']
     dades = models.session.query(models.Fitxes).filter(models.Fitxes.codi_aux == equip).first()
     return render_template("seleccionar_arxiu.html", dades=dades)
+
+
+@app.route('/subir_imagen', methods=['POST'])
+def subir_imagen():
+    imagen = request.files['imagen']
+    if imagen:
+        # Generar un nombre único para la imagen
+        nombre_imagen = str(uuid.uuid4()) + '.png'
+        # Guardar la imagen en la carpeta /app/static/images
+        imagen.save(os.path.join(app.root_path, 'static', 'images', nombre_imagen))
+        # Devolver la URL de la imagen
+        return jsonify({'success': True, 'image_url': f'/static/images/{nombre_imagen}'})
+    return jsonify({'success': False})
 
 
 # Route to go Home
