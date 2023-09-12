@@ -129,7 +129,7 @@
                   <th>PROVEÏDOR</th>
                   <th>Servei Tècnic</th>
                   <th>Telèfon</th>
-                  <th><i class="fa-solid fa-image"></i></th>
+                  <th style="width: 22%;"><i class="fa-solid fa-image"></i></th>
                 </tr>
               </thead>
               <tbody style="font-size: 12;">
@@ -141,8 +141,10 @@
                   <td><input type="text" value="{{dades.emp_subministradora}}"></td>
                   <td><input type="text" value="XXXXXXXXX"></td>
                   <td><input type="text" value="666666666"></td>
-                  <td class="popup-button" id="showPopup1" style="text-align: center; text-decoration: underline blue;">
-                    IMG</td>
+                  <td> <input type="file" id="imagenInput" accept="image/*">
+                    <img width="300px" height="200px" style="margin-top: 15px; margin-left: 25px;" id="imagenMostrada"
+                      src="">
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -164,7 +166,7 @@
                   <th>SITUACIÓ CONTRACTUAL</th>
                   <th>PREU</th>
                   <th>TIPUS D'EQUIP</th>
-                  <th><i class="fa-solid fa-image"></i></th>
+                  <th style="width: 22%;"><i class="fa-solid fa-image"></i></th>
                 </tr>
               </thead>
               <tbody style="font-size: 12;">
@@ -175,8 +177,10 @@
                   <td><input type="text" value="{{dades.situacio_contractual}}"></td>
                   <td><input type="text" value="{{dades.preu}}"></td>
                   <td><input type="text" value="{{dades.tipus}}"></td>
-                  <td class="popup-button" id="showPopup2" style="text-align: center; text-decoration: underline blue;">
-                    IMG</td>
+                  <td> <input type="file" id="imagenInput2" accept="image/*">
+                    <img width="300px" height="200px" style="margin-top: 15px; margin-left: 25px;" id="imagenMostrada2"
+                      src="">
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -195,12 +199,12 @@
                   <th>Amplada (cm)</th>
                   <th>Alçada (cm)</th>
                   <th>Profunditat (cm)</th>
-                  <th style="width: 50px;">Pes (Kg)</th>
+                  <th>Pes (Kg)</th>
                   <th>Volum (L)</th>
                   <th>Condicions ambientals</th>
                   <th>Humitat</th>
                   <th>Presa d'aigua desionitzada</th>
-                  <th><i class="fa-solid fa-image"></i></th>
+                  <th style="width: 22%;"><i class="fa-solid fa-image"></i></th>
                 </tr>
               </thead>
               <tbody style="font-size: 12;">
@@ -208,13 +212,15 @@
                   <td><input type="text" value="{{dades.amplada}}"></td>
                   <td><input type="text" value="{{dades.alçada}}"></td>
                   <td><input type="text" value="{{dades.profunditat}}"></td>
-                  <td><input type="text" value="{{dades.pes}}"></td>
-                  <td><input type="text" value="None"></td>
+                  <td><input type="text" style="width: 60px;" value="{{dades.pes}}"></td>
+                  <td><input type="text" style="width: 60px;" value="None"></td>
                   <td><input type="text" value="{{dades.condicions_ambientals}}"></td>
                   <td><input type="text" value="{{dades.humitat}}"></td>
                   <td><input type="text" value="{{dades.presa_aigua}}"></td>
-                  <td class="popup-button" id="showPopup3" style="text-align: center; text-decoration: underline blue;">
-                    IMG</td>
+                  <td> <input type="file" id="imagenInput3" accept="image/*">
+                    <img width="300px" height="200px" style="margin-top: 15px; margin-left: 25px;" id="imagenMostrada3"
+                      src="">
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -562,176 +568,46 @@
         </div>
       </div>
 
-      <!-- Popup 1 para la imagen -->
-      <div class="popup" id="imagePopup">
-        <div class="popup-content">
-          <span class="popup-close" id="closePopup">&times;</span>
-          <input type="file" id="imageInput">
-          <img src="" alt="Imagen Cargada" id="uploadedImage" style="display: none;">
-        </div>
-      </div>
-
-      <!-- Popup 2 para la imagen -->
-      <div class="popup" id="imagePopup2">
-        <div class="popup-content">
-          <span class="popup-close" id="closePopup2">&times;</span>
-          <input type="file" id="imageInput2">
-          <img src="" alt="Imagen Cargada" id="uploadedImage2" style="display: none;">
-        </div>
-      </div>
-
-      <!-- Popup 3 para la imagen -->
-      <div class="popup" id="imagePopup3">
-        <div class="popup-content">
-          <span class="popup-close" id="closePopup3">&times;</span>
-          <input type="file" id="imageInput3">
-          <img src="" alt="Imagen Cargada" id="uploadedImage3" style="display: none;">
-        </div>
-      </div>
-
     </div>
   </div>
 
   <script>
 
-    const showPopupButton = document.getElementById('showPopup1');
-    const imagePopup = document.getElementById('imagePopup');
-    const closePopupButton = document.getElementById('closePopup');
-    const imageInput = document.getElementById('imageInput');
-    const uploadedImage = document.getElementById('uploadedImage');
-    const imageUploadedText = document.getElementById('imageUploadedText');
+    const input = document.getElementById('imagenInput');
+    const imagenMostrada = document.getElementById('imagenMostrada');
 
-    showPopupButton.addEventListener('click', () => {
-      imagePopup.style.display = 'block';
-    });
+    const input2 = document.getElementById('imagenInput2');
+    const imagenMostrada2 = document.getElementById('imagenMostrada2');
 
-    closePopupButton.addEventListener('click', () => {
-      imagePopup.style.display = 'none';
-    });
+    const input3 = document.getElementById('imagenInput3');
+    const imagenMostrada3 = document.getElementById('imagenMostrada3');
 
-    imageInput.addEventListener('change', () => {
-      const file = imageInput.files[0];
+    // Función para mostrar la imagen
+    function mostrarImagen(input, imagenMostrada) {
+      const file = input.files[0];
       if (file) {
         const reader = new FileReader();
-        reader.onload = function (e) {
-          uploadedImage.src = e.target.result;
-          uploadedImage.style.display = 'block';
-          imageUploadedText.style.display = 'block';
-          imageInput.style.display = 'none';
+        reader.onload = function () {
+          const imageData = reader.result;
+          // Mostrar la imagen en la tabla
+          imagenMostrada.src = imageData;
         };
         reader.readAsDataURL(file);
+      } else {
+        // Borrar la imagen si no se selecciona ninguna
+        imagenMostrada.src = '';
       }
-    });
+    }
 
-    // Almacenar la imagen en el navegador localmente
-    window.addEventListener('beforeunload', () => {
-      const imgSrc = uploadedImage.src;
-      localStorage.setItem('uploadedImage', imgSrc);
-    });
+    // Asignar evento onchange a cada campo de entrada de archivo
+    input.addEventListener('change', () => mostrarImagen(input, imagenMostrada));
+    input2.addEventListener('change', () => mostrarImagen(input2, imagenMostrada2));
+    input3.addEventListener('change', () => mostrarImagen(input3, imagenMostrada3));
 
-    // Recuperar la imagen almacenada localmente al cargar la página
-    window.addEventListener('load', () => {
-      const imgSrc = localStorage.getItem('uploadedImage');
-      if (imgSrc) {
-        uploadedImage.src = imgSrc;
-        uploadedImage.style.display = 'block';
-        imageUploadedText.style.display = 'block';
-        imageInput.style.display = 'none';
-      }
-    });
-
-    const showPopupButton2 = document.getElementById('showPopup2');
-    const imagePopup2 = document.getElementById('imagePopup2');
-    const closePopupButton2 = document.getElementById('closePopup2');
-    const imageInput2 = document.getElementById('imageInput2');
-    const uploadedImage2 = document.getElementById('uploadedImage2');
-    const imageUploadedText2 = document.getElementById('imageUploadedText2');
-
-    showPopupButton2.addEventListener('click', () => {
-      imagePopup2.style.display = 'block';
-    });
-
-    closePopupButton2.addEventListener('click', () => {
-      imagePopup2.style.display = 'none';
-    });
-
-    imageInput2.addEventListener('change', () => {
-      const file = imageInput2.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-          uploadedImage2.src = e.target.result;
-          uploadedImage2.style.display = 'block';
-          imageUploadedText2.style.display = 'block';
-          imageInput2.style.display = 'none';
-        };
-        reader.readAsDataURL(file);
-      }
-    });
-
-    // Almacenar la imagen en el navegador localmente
-    window.addEventListener('beforeunload', () => {
-      const imgSrc = uploadedImage2.src;
-      localStorage.setItem('uploadedImage2', imgSrc);
-    });
-
-    // Recuperar la imagen almacenada localmente al cargar la página
-    window.addEventListener('load', () => {
-      const imgSrc = localStorage.getItem('uploadedImage2');
-      if (imgSrc) {
-        uploadedImage2.src = imgSrc;
-        uploadedImage2.style.display = 'block';
-        imageUploadedText2.style.display = 'block';
-        imageInput2.style.display = 'none';
-      }
-    });
-
-
-    const showPopupButton3 = document.getElementById('showPopup3');
-    const imagePopup3 = document.getElementById('imagePopup3');
-    const closePopupButton3 = document.getElementById('closePopup3');
-    const imageInput3 = document.getElementById('imageInput3');
-    const uploadedImage3 = document.getElementById('uploadedImage3');
-    const imageUploadedText3 = document.getElementById('imageUploadedText3');
-
-    showPopupButton3.addEventListener('click', () => {
-      imagePopup3.style.display = 'block';
-    });
-
-    closePopupButton3.addEventListener('click', () => {
-      imagePopup3.style.display = 'none';
-    });
-
-    imageInput3.addEventListener('change', () => {
-      const file = imageInput3.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-          uploadedImage3.src = e.target.result;
-          uploadedImage3.style.display = 'block';
-          imageUploadedText3.style.display = 'block';
-          imageInput3.style.display = 'none';
-        };
-        reader.readAsDataURL(file);
-      }
-    });
-
-    // Almacenar la imagen en el navegador localmente
-    window.addEventListener('beforeunload', () => {
-      const imgSrc = uploadedImage3.src;
-      localStorage.setItem('uploadedImage3', imgSrc);
-    });
-
-    // Recuperar la imagen almacenada localmente al cargar la página
-    window.addEventListener('load', () => {
-      const imgSrc = localStorage.getItem('uploadedImage3');
-      if (imgSrc) {
-        uploadedImage3.src = imgSrc;
-        uploadedImage3.style.display = 'block';
-        imageUploadedText3.style.display = 'block';
-        imageInput3.style.display = 'none';
-      }
-    });
+    // Cargar imagen almacenada (si existe) al cargar la página
+    window.addEventListener('load', () => mostrarImagen(input, imagenMostrada));
+    window.addEventListener('load', () => mostrarImagen(input2, imagenMostrada2));
+    window.addEventListener('load', () => mostrarImagen(input3, imagenMostrada3));
 
   </script>
 
