@@ -1,10 +1,8 @@
-from flask import render_template, request, flash, redirect, send_file, session, jsonify
+from flask import jsonify, render_template, request, redirect, send_file, session
 from config import URL_HOME
 from app import app
 from app import utils
 from app import models
-import os
-import uuid
 import jwt
 from functools import wraps
 
@@ -39,8 +37,8 @@ def inici():
 
 
 # Ruta per seleccionar les files de les mostres
-@app.route("/seleccionar_arxiu", methods=["POST", "GET"])
-def seleccionar_arxiu():
+@app.route("/fitxa_tecnica", methods=["POST", "GET"])
+def fitxa_tecnica():
     """
     Redirecciona l'html principal per afegir l'arxiu d'input.
 
@@ -50,20 +48,113 @@ def seleccionar_arxiu():
 
     equip = request.form['opcions']
     dades = models.session.query(models.Fitxes).filter(models.Fitxes.codi_aux == equip).first()
-    return render_template("seleccionar_arxiu.html", dades=dades)
+    return render_template("fitxa_tecnica.html", dades=dades)
 
 
-@app.route('/subir_imagen', methods=['POST'])
-def subir_imagen():
-    imagen = request.files['imagen']
-    if imagen:
-        # Generar un nombre único para la imagen
-        nombre_imagen = str(uuid.uuid4()) + '.png'
-        # Guardar la imagen en la carpeta /app/static/images
-        imagen.save(os.path.join(app.root_path, 'static', 'images', nombre_imagen))
-        # Devolver la URL de la imagen
-        return jsonify({'success': True, 'image_url': f'/static/images/{nombre_imagen}'})
-    return jsonify({'success': False})
+# Generar pdf
+@app.route("/generar_pdf", methods=["POST"])
+def generar_pdf():
+    data = {}
+
+    for key, value in request.form.items():
+        data[key] = value
+
+    try:
+        equip = models.session.query(models.Fitxes).filter(models.Fitxes.codi_aux == data["codi_aux"]).first()
+        equip.descripcio = data["descripcio"]
+        equip.fabricant = data["fabricant"]
+        equip.ref_fabricant = data["ref_fabricant"]
+        equip.serial_number = data["serial_number"]
+        equip.model = data["model"]
+        equip.emp_subministradora = data["emp_subministradora"]
+        # Servei Tecnic = data["servei_tecnic"]
+        # Telefon = data["telefon"]
+        equip.data_alta = data["data_alta"]
+        equip.condicions_equip = data["condicions_equip"]
+        equip.data_baixa = data["data_baixa"]
+        equip.situacio_contractual = data["situacio_contractual"]
+        equip.preu = data["preu"]
+        equip.tipus = data["tipus"]
+        equip.amplada = data["amplada"]
+        equip.alçada = data["alçada"]
+        equip.profunditat = data["profunditat"]
+        equip.pes = data["pes"]
+        # Volum = data["volum"]
+        equip.condicions_ambientals = data["condicions_ambientals"]
+        equip.humitat = data["humitat"]
+        equip.presa_aigua = data["presa_aigua"]
+        # Marca Pantalla = data["marca_pantalla"]
+        # Model Pantalla = data["model_pantalla"]
+        # Num Serie Pantalla = data["num_serie_pantalla"]
+        # Codi Pantalla = data["codi_pantalla"]
+        equip.sai = data["marca_sai"] + " / " + data["model_sai"] + " / " + data["num_serie_sai"] + " / " + data["codi_sai"]
+        # Cont Comercial = data[?]
+        # Cont Tecnic = data[?]
+        # Observacions = data[?]
+        # Marca Lector = data["marca_lector"]
+        # Model Lector = data["model_lector"]
+        # Num Serie Lector = data["num_serie_lector"]
+        # Codi Lector = data["codi_lector"]
+        # Marca Impresora = data["marca_impresora"]
+        # Model Impresora = data["model_impresora"]
+        # Num Serie Impresora = data["num_serie_impresora"]
+        # Codi Impresora = data["codi_impresora"]
+        # Marca Tensio = data["marca_tensio"]
+        # Model Tensio = data["model_tensio"]
+        # Num Serie Tensio = data["num_serie_tensio"]
+        # Codi Tensio = data["codi_tensio"]
+        # Software 1 = data["soft_1"]
+        # Versio 1 = data["versio_1"]
+        # Software 2 = data["soft_2"]
+        # Versio 2 = data["versio_2"]
+        # Software 3 = data["soft_3"]
+        # Versio 3 = data["versio_3"]
+        # Personal Tecnic Udmmp = data["personal_tecnic_udmmp"]
+        # Facultatius Udmmp = data["facultatius_udmmp"]
+        # Ref Fungible 1 = data["ref_fung1"]
+        # Descripcio Fungible 1 = data["desc_fung1"]
+        # Ref Fungible 2 = data["ref_fung2"]
+        # Descripcio Fungible 2 = data["desc_fung2"]
+        # Document 1 = data["doc1"]
+        # Document 2 = data["doc2"]
+        # Contracte Manteniment = data["cont_manteniment"]
+        # Manteniment Extern = data["manteniment_ext"]
+        # Manteniment Internt = data["manteniment_int"]
+        # Verificacio Interna = data["verificacio_int"]
+        # Verificacio Externa = data["verificacio_ext"]
+        # Calibratge Extern = data["cal_ext"]
+        # Calibratge Intert = data["cal_int"]
+        # Nom Contracte = data["nom_contracte"]
+        # Empresa Responsable 1 = data["emp_respon1"]
+        # Periode Cobertura 1 = data["periode_cober1"]
+        # Dades Contracte 1 = data["dades_cont1"]
+        # Empresa Responsable 2 = data["emp_respon2"]
+        # Periode Cobertura 2 = data["periode_cober2"]
+        # Dades Contracte 2 = data["dades_cont2"]
+        # Empresa Responsable Preventiu Extern = data["emp_respon_prev_ext"]
+        # Periodicitat Preventiu Extern = data["periodicitat_prev_ext"]
+        # Contracte Preventiu Extern = data["cont_prev_ext"]
+        # Manteniment Preventiu Extern = data["mant_prev_ext"]
+        # Verificacio Preventiu Extern = data["verif_prev_ext"]
+        # Calibratge Preventiu Extern = data["calib_prev_ext"]
+        # Marges Acceptacio Preventiu Extern = data["marges_accept_prev_ext"]
+        # Descripcio Preventiu Intern = data["desc_prev_int"]
+        # Periodicitat Preventiu Intern = data["periodicitat_prev_int"]
+        # Marges Acceptacio Preventiu Intern = data["marges_accept_prev_int"]
+        # Descripcio Veriricacio Interna = data["desc_verif_int"]
+        # Periodicitat Verificacio Interna = data["periodicitat_verif_int"]
+        # Marges Acceptacio Verificacio Interna = data["marges_accept_verif_int"]
+        # Descripcio Calibratge Intern = data["calib_desc_int"]
+        # Periodicitat Calibratge Intern = data["calib_periodicitat_int"]
+        # Marges Acceptacio Calibratge Intern = data["calib_marges_accept_int"]
+        models.session.commit()
+
+        # Generar PDF
+        utils.create_docx(data)
+
+        return send_file("docx/" + data['codi_aux'] + ".docx")
+    except Exception:
+        return "Error al actualitzar"
 
 
 # Route to go Home
