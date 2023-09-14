@@ -1,4 +1,5 @@
 import pandas as pd
+from docxtpl import DocxTemplate
 
 
 def llegir_excel(path_excel):
@@ -6,3 +7,105 @@ def llegir_excel(path_excel):
     data = pd.read_excel(path_excel, skiprows=4)
     filas = data.to_numpy().tolist()
     return filas
+
+
+def create_docx(data):
+
+    doc = DocxTemplate("app/templates/fitxa_tecnica_template.docx")
+    report_name = data["codi_aux"] + ".docx"
+    body = {
+        "codi_aux": data["codi_aux"],
+        "descripcio": data["descripcio"],
+        "fabricant": data["fabricant"],
+        "ref_fabricant": data["ref_fabricant"],
+        "serial_number": data["serial_number"],
+        "model": data["model"],
+        "emp_subministradora": data["emp_subministradora"],
+        "servei_tecnic": data["servei_tecnic"],
+        "telefon": data["telefon"],
+        "data_alta": data["data_alta"],
+        "condicions_equip": data["condicions_equip"],
+        "data_baixa": data["data_baixa"],
+        "situacio_contractual": data["situacio_contractual"],
+        "preu": data["preu"],
+        "tipus": data["tipus"],
+        "amplada": data["amplada"],
+        "alçada": data["alçada"],
+        "profunditat": data["profunditat"],
+        "pes": data["pes"],
+        "volum": data["volum"],
+        "condicions_ambientals": data["condicions_ambientals"],
+        "humitat": data["humitat"],
+        "presa_aigua": data["presa_aigua"],
+        "marca_pantalla": data["marca_pantalla"],
+        "model_pantalla": data["model_pantalla"],
+        "num_serie_pantalla": data["num_serie_pantalla"],
+        "codi_pantalla": data["codi_pantalla"],
+        "marca_sai": data["marca_sai"],
+        "model_sai": data["model_sai"],
+        "num_serie_sai": data["num_serie_sai"],
+        "codi_sai": data["codi_sai"],
+        # Cont Comercial: data[?],
+        # Cont Tecnic: data[?],
+        # Observacions: data[?],
+        "marca_lector": data["marca_lector"],
+        "model_lector": data["model_lector"],
+        "num_serie_lector": data["num_serie_lector"],
+        "codi_lector": data["codi_lector"],
+        "marca_impresora": data["marca_impresora"],
+        "model_impresora": data["model_impresora"],
+        "num_serie_impresora": data["num_serie_impresora"],
+        "codi_impresora": data["codi_impresora"],
+        "marca_tensio": data["marca_tensio"],
+        "model_tensio": data["model_tensio"],
+        "num_serie_tensio": data["num_serie_tensio"],
+        "codi_tensio": data["codi_tensio"],
+        "soft_1": data["soft_1"],
+        "versio_1": data["versio_1"],
+        "soft_2": data["soft_2"],
+        "versio_2": data["versio_2"],
+        "soft_3": data["soft_3"],
+        "versio_3": data["versio_3"],
+        "personal_tecnic_udmmp": data["personal_tecnic_udmmp"],
+        "facultatius_udmmp": data["facultatius_udmmp"],
+        "ref_fung1": data["ref_fung1"],
+        "desc_fung1": data["desc_fung1"],
+        "ref_fung2": data["ref_fung2"],
+        "desc_fung2": data["desc_fung2"],
+        "doc1": data["doc1"],
+        "doc2": data["doc2"],
+        "cont_manteniment": data["cont_manteniment"],
+        "manteniment_ext": data["manteniment_ext"],
+        "manteniment_int": data["manteniment_int"],
+        "verificacio_int": data["verificacio_int"],
+        "verificacio_ext": data["verificacio_ext"],
+        "cal_ext": data["cal_ext"],
+        "cal_int": data["cal_int"],
+        "nom_contracte": data["nom_contracte"],
+        "emp_respon1": data["emp_respon1"],
+        "periode_cober1": data["periode_cober1"],
+        "dades_cont1": data["dades_cont1"],
+        "emp_respon2": data["emp_respon2"],
+        "periode_cober2": data["periode_cober2"],
+        "dades_cont2": data["dades_cont2"],
+        "emp_respon_prev_ext": data["emp_respon_prev_ext"],
+        "periodicitat_prev_ext": data["periodicitat_prev_ext"],
+        "cont_prev_ext": data["cont_prev_ext"],
+        "mant_prev_ext": data["mant_prev_ext"],
+        "verif_prev_ext": data["verif_prev_ext"],
+        "calib_prev_ext": data["calib_prev_ext"],
+        "marges_accept_prev_ext": data["marges_accept_prev_ext"],
+        "desc_prev_int": data["desc_prev_int"],
+        "periodicitat_prev_int": data["periodicitat_prev_int"],
+        "marges_accept_prev_int": data["marges_accept_prev_int"],
+        "desc_verif_int": data["desc_verif_int"],
+        "periodicitat_verif_int": data["periodicitat_verif_int"],
+        "marges_accept_verif_int": data["marges_accept_verif_int"],
+        "calib_desc_int": data["calib_desc_int"],
+        "calib_periodicitat_int": data["calib_periodicitat_int"],
+        "calib_marges_accept_int": data["calib_marges_accept_int"],
+    }
+
+    context = {"body": body}
+    doc.render(context)
+    doc.save("app/docx/" + report_name)

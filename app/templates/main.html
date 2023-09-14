@@ -42,7 +42,7 @@
                 <div class="card card-body border-1 m-1" style="background-color:#EDEDED; text-align: center;">
                     <div class="card-body text-center">
                         <h6 class="card-title font-weight-bold">Selecciona un equip</h6>
-                        <form action="/seleccionar_arxiu" method="post">
+                        <form action="/fitxa_tecnica" method="post">
                             <select class="custom-select" id="opcions" name="opcions" style="width: 50%;">
                                 {% for equip in equips %}
                                 <option value="{{ equip.codi_aux }}">{{ equip.codi_aux }}
