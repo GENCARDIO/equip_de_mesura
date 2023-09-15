@@ -1,4 +1,4 @@
-from flask import jsonify, render_template, request, redirect, send_file, session
+from flask import render_template, request, redirect, send_file, session, flash
 from config import URL_HOME
 from app import app
 from app import utils
@@ -155,6 +155,80 @@ def generar_pdf():
         return send_file("docx/" + data['codi_aux'] + ".docx")
     except Exception:
         return "Error al actualitzar"
+
+
+# Afegir equip
+@app.route("/form_afegir_equip")
+def form_afegir_equip():
+    """
+    Redirecciona a la pagina principal.
+
+    :returns: Retorna el html de la pagina principal.
+    :rtype: render_template
+    """
+    # Redirecciona al html
+    return render_template("afegir_equip.html")
+
+
+# Afegir equip
+@app.route("/afegir_equip", methods=["POST"])
+def afegir_equip():
+    """
+    Redirecciona a la pagina principal.
+
+    :returns: Retorna el html de la pagina principal.
+    :rtype: render_template
+    """
+
+    info = {}
+    dades = request.form.items()
+    for key, value in dades:
+        info[key] = value
+
+    if info["codi_aux"] == "":
+        flash("Error, el codi_aux es obligatori!", "warning")
+        return redirect("/form_afegir_equip")
+
+    equip = models.session.query(models.Fitxes).filter(models.Fitxes.codi_aux == info["codi_aux"]).first()
+    if equip is not None:
+        flash("Error, el codi_aux no pot esta repetit!", "warning")
+        return redirect("/form_afegir_equip")
+
+    try:
+        insert = models.Fitxes(
+            codi_aux=info["codi_aux"],
+            codi_cgc=info["codi_cgc"],
+            descripcio=info["descripcio"],
+            fabricant=info["fabricant"],
+            ref_fabricant=info["ref_fabricant"],
+            serial_number=info["serial_number"],
+            model=info["model"],
+            emp_subministradora=info["emp_subministradora"],
+            data_alta=info["data_alta"],
+            condicions_equip=info["condicions_equip"],
+            data_baixa=info["data_baixa"],
+            situacio_contractual=info["situacio_contractual"],
+            preu=info["preu"],
+            tipus=info["tipus"],
+            amplada=info["amplada"],
+            alçada=info["alçada"],
+            profunditat=info["profunditat"],
+            pes=info["pes"],
+            condicions_ambientals=info["condicions_ambientals"],
+            humitat=info["humitat"],
+            presa_aigua=info["presa_aigua"],
+            sai=info["sai"],
+            cont_comercial=info["contacte_comercial"],
+            cont_tecnic=info["contacte_tecnic"],
+            observacions=info["observacions"]
+        )
+        models.session.add(insert)
+        models.session.commit()
+        flash("Afegit correctament", "success")
+        return redirect("/")
+    except Exception:
+        flash("Error al afegir", "warning")
+        return redirect("/form_afegir_equip")
 
 
 # Route to go Home

@@ -1,0 +1,206 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<head>
+    <title>Formulari afegir equip</title>
+    <!-- Agregar los enlaces a los archivos CSS y JS de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Mensajes Flash -->
+    <div class="container mt-3">
+        <div class="row justify-content-center">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Cerrar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <h2 style="font-weight: bold;">Nou Equip</h2>
+        <hr>
+        <h3 style="margin-top: 5px; margin-bottom: 15px;"> Característiques generals de l'equip</h3>
+        <form action="/afegir_equip" method="post">
+
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        <label>Codi Aux:</label>
+                        <input type="text" class="form-control" name="codi_aux"
+                            placeholder="Introdueix el codi aux (AUX-DMXXX)">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Descripcio:</label>
+                        <textarea class="form-control" name="descripcio" rows="1"
+                            placeholder="Descriu l'equip"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Fabricant:</label>
+                        <input type="text" class="form-control" name="fabricant" placeholder="Introdueix el fabricant">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Serial Number:</label>
+                        <input type="text" class="form-control" name="serial_number"
+                            placeholder="Introdueix el serial number">
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        <label>Codi CGC:</label>
+                        <input type="text" class="form-control" name="codi_cgc"
+                            placeholder="Introdueix el codi cgc (CGCXXXXX)">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Referencia Fabricant</label>
+                        <input type="text" class="form-control" name="ref_fabricant"
+                            placeholder="Introdueix la referencia del fabricant">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Model:</label>
+                        <input type="text" class="form-control" name="model" placeholder="Introdueix el model">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Empresa subministradora:</label>
+                        <input type="text" class="form-control" name="emp_subministradora"
+                            placeholder="Introdueix la empresa subministradora">
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <h3 style="margin-top: 5px; margin-bottom: 15px;">Adquisició</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Data Alta:</label>
+                        <input type="text" class="form-control" name="data_alta" placeholder="Introdueix la data alta">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Condicions de l'equip a la recepció:</label>
+                        <input type="text" class="form-control" name="condicions_equip"
+                            placeholder="Introdueix les condicions del equip a la recepció">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Data Baixa:</label>
+                        <input type="text" class="form-control" name="data_baixa"
+                            placeholder="Introdueix la data baixa">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Situació contractual:</label>
+                        <input type="text" class="form-control" name="situacio_contractual"
+                            placeholder="Introdueix la situació contractual">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Preu aproximat:</label>
+                        <input type="text" class="form-control" name="preu" placeholder="Introdueix el preu aproximat">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tipus d'equip:</label>
+                        <input type="text" class="form-control" name="tipus" placeholder="Introdueix el tipus de equip">
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <h3 style="margin-top: 5px; margin-bottom: 15px;">Característiques fisiques</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Amplada (cm):</label>
+                        <input type="text" class="form-control" name="amplada" placeholder="Introdueix l'amplada en cm">
+                    </div>
+                    <div class="form-group">
+                        <label>Alçada (cm):</label>
+                        <input type="text" class="form-control" name="alçada" placeholder="Introdueix l'alçada en cm">
+                    </div>
+                    <div class="form-group">
+                        <label>Profunditat (cm):</label>
+                        <input type="text" class="form-control" name="profunditat"
+                            placeholder="Introdueix la profunditat en cm">
+                    </div>
+                    <div class="form-group">
+                        <label>Pes (kg):</label>
+                        <input type="text" class="form-control" name="pes" placeholder="Introdueix el pes en kg">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Condicions ambientals:</label>
+                        <input type="text" class="form-control" name="condicions_ambientals"
+                            placeholder="Introdueix les condicions ambientals">
+                    </div>
+                    <div class="form-group">
+                        <label>Humitat:</label>
+                        <input type="text" class="form-control" name="humitat" placeholder="Introdueix l'humitat">
+                    </div>
+                    <div class="form-group">
+                        <label>Presa d'aigua desionitzada:</label>
+                        <input type="text" class="form-control" name="presa_aigua"
+                            placeholder="Introdueix la presa d'aigua desionitzada">
+                    </div>
+                    <div class="form-group">
+                        <label>SAI:</label>
+                        <input type="text" class="form-control" name="sai" placeholder="Introdueix el sai">
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <h3>Contacte</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Contacte comercial:</label>
+                        <input type="text" class="form-control" name="contacte_comercial"
+                            placeholder="Introdueix el contacte contacte_comercial">
+                    </div>
+                    <div class="form-group">
+                        <label>Contacte tècnic:</label>
+                        <input type="text" class="form-control" name="contacte_tecnic"
+                            placeholder="Introdueix el contacte tècnic">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Observacions:</label>
+                        <textarea class="form-control" name="observacions" rows="4"
+                            placeholder="Observacions"></textarea>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" style="margin-bottom: 10px;" class="btn btn-primary">Enviar dades</button>
+        </form>
+    </div>
+</body>
+{% endblock content %}
