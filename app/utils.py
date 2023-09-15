@@ -1,5 +1,6 @@
 import pandas as pd
-from docxtpl import DocxTemplate
+from docxtpl import DocxTemplate, InlineImage
+from docx.shared import Mm
 
 
 def llegir_excel(path_excel):
@@ -13,6 +14,12 @@ def create_docx(data):
 
     doc = DocxTemplate("app/templates/fitxa_tecnica_template.docx")
     report_name = data["codi_aux"] + ".docx"
+
+    # print(data["img_1"])
+    img_1 = InlineImage(doc, image_descriptor='app/static/' + data["img_1"], width=Mm(20), height=Mm(20))
+    img_2 = InlineImage(doc, image_descriptor='app/static/' + data["img_2"], width=Mm(20), height=Mm(20))
+    img_3 = InlineImage(doc, image_descriptor='app/static/' + data["img_3"], width=Mm(20), height=Mm(20))
+
     body = {
         "codi_aux": data["codi_aux"],
         "descripcio": data["descripcio"],
@@ -23,12 +30,14 @@ def create_docx(data):
         "emp_subministradora": data["emp_subministradora"],
         "servei_tecnic": data["servei_tecnic"],
         "telefon": data["telefon"],
+        "img_1": img_1,
         "data_alta": data["data_alta"],
         "condicions_equip": data["condicions_equip"],
         "data_baixa": data["data_baixa"],
         "situacio_contractual": data["situacio_contractual"],
         "preu": data["preu"],
         "tipus": data["tipus"],
+        "img_2": img_2,
         "amplada": data["amplada"],
         "alçada": data["alçada"],
         "profunditat": data["profunditat"],
@@ -37,6 +46,7 @@ def create_docx(data):
         "condicions_ambientals": data["condicions_ambientals"],
         "humitat": data["humitat"],
         "presa_aigua": data["presa_aigua"],
+        "img_3": img_3,
         "marca_pantalla": data["marca_pantalla"],
         "model_pantalla": data["model_pantalla"],
         "num_serie_pantalla": data["num_serie_pantalla"],
