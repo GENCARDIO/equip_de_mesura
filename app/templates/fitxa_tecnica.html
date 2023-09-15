@@ -148,7 +148,7 @@
                     <td><input type="text" name="emp_subministradora" value="{{dades.emp_subministradora}}"></td>
                     <td><input type="text" name="servei_tecnic" value="XXXXXXXXX"></td>
                     <td><input type="text" name="telefon" value="666666666"></td>
-                    <td> <input type="file" id="imagenInput" accept="image/*">
+                    <td> <input type="file" id="imagenInput" name="img_1" accept="image/*">
                       <img width="300px" height="200px" style="margin-top: 15px; margin-left: 25px;" id="imagenMostrada"
                         src="">
                     </td>
@@ -184,7 +184,7 @@
                     <td><input type="text" name="situacio_contractual" value="{{dades.situacio_contractual}}"></td>
                     <td><input type="text" name="preu" value="{{dades.preu}}"></td>
                     <td><input type="text" name="tipus" value="{{dades.tipus}}"></td>
-                    <td> <input type="file" id="imagenInput2" accept="image/*">
+                    <td> <input type="file" id="imagenInput2" name="img_2" accept="image/*">
                       <img width="300px" height="200px" style="margin-top: 15px; margin-left: 25px;"
                         id="imagenMostrada2" src="">
                     </td>
@@ -224,7 +224,7 @@
                     <td><input type="text" name="condicions_ambientals" value="{{dades.condicions_ambientals}}"></td>
                     <td><input type="text" name="humitat" value="{{dades.humitat}}"></td>
                     <td><input type="text" name="presa_aigua" value="{{dades.presa_aigua}}"></td>
-                    <td> <input type="file" id="imagenInput3" accept="image/*">
+                    <td> <input type="file" id="imagenInput3" name="img_3" accept="image/*">
                       <img width="300px" height="200px" style="margin-top: 15px; margin-left: 25px;"
                         id="imagenMostrada3" src="">
                     </td>
@@ -608,6 +608,26 @@
           const imageData = reader.result;
           // Mostrar la imagen en la tabla
           imagenMostrada.src = imageData;
+
+          // Agregar código para guardar la imagen en el servidor
+          const formData = new FormData();
+          formData.append('imagen', file);
+
+          fetch('/guardar_imagen', {
+            method: 'POST',
+            body: formData,
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.success) {
+                console.log('Imagen guardada en el servidor:', data.message);
+              } else {
+                console.error('Error al guardar la imagen en el servidor');
+              }
+            })
+            .catch((error) => {
+              console.error('Error de red:', error);
+            });
         };
         reader.readAsDataURL(file);
       } else {

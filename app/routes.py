@@ -1,5 +1,6 @@
 from flask import render_template, request, redirect, send_file, session, flash
 from config import URL_HOME
+import os
 from app import app
 from app import utils
 from app import models
@@ -58,8 +59,20 @@ def generar_pdf():
 
     for key, value in request.form.items():
         data[key] = value
+    if 'img_' in request.files:
+        img_1 = request.files['img_1']
+        img_2 = request.files['img_2']
+        img_3 = request.files['img_3']
+        data["img_1"] = img_1.filename
+        data["img_2"] = img_2.filename
+        data["img_3"] = img_3.filename
+    else:
+        data["img_1"] = "logo3.jpg"
+        data["img_2"] = "logo3.jpg"
+        data["img_3"] = "logo3.jpg"
 
     try:
+
         equip = models.session.query(models.Fitxes).filter(models.Fitxes.codi_aux == data["codi_aux"]).first()
         equip.descripcio = data["descripcio"]
         equip.fabricant = data["fabricant"]
@@ -153,8 +166,10 @@ def generar_pdf():
         utils.create_docx(data)
 
         return send_file("docx/" + data['codi_aux'] + ".docx")
+
     except Exception:
-        return "Error al actualitzar"
+        flash("No s'ha creat el pdf, error intern!", "warning")
+        return redirect("/")
 
 
 # Afegir equip
@@ -229,6 +244,27 @@ def afegir_equip():
     except Exception:
         flash("Error al afegir", "warning")
         return redirect("/form_afegir_equip")
+
+
+@app.route('/guardar_imagen', methods=['POST'])
+def guardar_imagen():
+    if 'img_' not in request.files:
+        pass
+        # return jsonify({'success': False, 'message': 'No se proporcionó ninguna imagen'}), 400
+
+    imagen = request.files['imagen']
+
+    if imagen.filename == '':
+        pass
+        # return jsonify({'success': False, 'message': 'No se seleccionó ningún archivo'}), 400
+
+    if imagen:
+        filename = os.path.join("app/static", imagen.filename)
+        imagen.save(filename)
+        # return jsonify({'success': True, 'message': 'Imagen guardada exitosamente', 'imageUrl': filename}), 200
+
+    return "ok"
+    # return jsonify({'success': False, 'message': 'Error al guardar la imagen'}), 500
 
 
 # Route to go Home
