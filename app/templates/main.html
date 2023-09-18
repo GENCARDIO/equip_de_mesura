@@ -43,9 +43,11 @@
                     <div class="card-body text-center">
                         <h6 class="card-title font-weight-bold">Selecciona un equip</h6>
                         <form action="/fitxa_tecnica" method="post">
+                            <input class="custom-select" style="width: 50%; margin-bottom: 5px;" type="text"
+                                id="searchInput" placeholder="Buscar per descripció"><br>
                             <select class="custom-select" id="opcions" name="opcions" style="width: 50%;">
                                 {% for equip in equips %}
-                                <option value="{{ equip.codi_aux }}">{{ equip.codi_aux }}
+                                <option value="{{ equip.codi_aux }}">{{ equip.descripcio }} - {{equip.codi_aux}}
                                 </option>
                                 {% endfor %}
                             </select>
@@ -60,6 +62,40 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Función para filtrar opciones en tiempo real
+        document.getElementById("searchInput").addEventListener("input", function () {
+            var input, filter, dropdown, options, option, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            dropdown = document.getElementById("opcions");
+            options = dropdown.getElementsByTagName("option");
+            var found = false; // Para verificar si se encontraron coincidencias
+
+            for (i = 0; i < options.length; i++) {
+                option = options[i];
+                txtValue = option.textContent || option.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    option.style.display = "";
+                    found = true; // Hay al menos una coincidencia
+                } else {
+                    option.style.display = "none";
+                }
+            }
+
+            // Cambiar la primera opción cuando se escriba
+            if (found) {
+                var firstOption = dropdown.querySelector("option:not([style='display: none;'])");
+                if (firstOption) {
+                    dropdown.value = firstOption.value;
+                }
+            } else {
+                // Si no se encontraron coincidencias, mostrar "No disponible"
+                dropdown.value = "No Disponible";
+            }
+        });
+    </script>
 </body>
 
 </html>
