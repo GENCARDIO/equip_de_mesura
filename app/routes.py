@@ -32,11 +32,8 @@ def inici():
     :returns: Retorna el html de la pagina principal.
     :rtype: render_template
     """
-    # Redirecciona al html
-    # equips = models.session.query(models.Fitxes).order_by(models.Fitxes.codi_aux).all()
-    equips = models.session.query(models.Fitxes).filter(or_(models.Fitxes.codi_aux.like('EIM%'),
-                                                            models.Fitxes.codi_aux.like('prova%'))
-                                                        ).order_by(models.Fitxes.codi_aux).all()
+
+    equips = models.session.query(models.Fitxes).filter(models.Fitxes.codi_aux.like('EIM%')).all()
     return render_template("main.html", equips=equips)
 
 
@@ -50,9 +47,14 @@ def fitxa_tecnica():
     :rtype: render_template
     """
 
-    equip = request.form['opcions']
-    dades = models.session.query(models.Fitxes).filter(models.Fitxes.codi_aux == equip).first()
-    return render_template("fitxa_tecnica.html", dades=dades)
+    try:
+        equip = request.form['opcions']
+        dades = models.session.query(models.Fitxes).filter(models.Fitxes.codi_aux == equip).first()
+        return render_template("fitxa_tecnica.html", dades=dades)
+
+    except Exception:
+        flash("L'equip seleccionat no existeix!", "warning")
+        return redirect("/")
 
 
 # Generar pdf
