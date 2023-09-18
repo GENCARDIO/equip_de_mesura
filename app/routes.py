@@ -4,6 +4,7 @@ import os
 from app import app
 from app import utils
 from app import models
+from sqlalchemy import or_
 import jwt
 from functools import wraps
 
@@ -32,8 +33,10 @@ def inici():
     :rtype: render_template
     """
     # Redirecciona al html
-
-    equips = models.session.query(models.Fitxes).all()
+    # equips = models.session.query(models.Fitxes).order_by(models.Fitxes.codi_aux).all()
+    equips = models.session.query(models.Fitxes).filter(or_(models.Fitxes.codi_aux.like('EIM%'),
+                                                            models.Fitxes.codi_aux.like('prova%'))
+                                                        ).order_by(models.Fitxes.codi_aux).all()
     return render_template("main.html", equips=equips)
 
 
