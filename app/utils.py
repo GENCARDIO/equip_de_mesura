@@ -1,6 +1,7 @@
 import pandas as pd
 from docxtpl import DocxTemplate, InlineImage
 from docx.shared import Mm
+import re
 
 
 def llegir_excel(path_excel):
@@ -20,6 +21,18 @@ def create_docx(data):
     img_2 = InlineImage(doc, image_descriptor='app/static/' + data["img_2"], width=Mm(20), height=Mm(20))
     img_3 = InlineImage(doc, image_descriptor='app/static/' + data["img_3"], width=Mm(20), height=Mm(20))
 
+    patro_data = r'^\d{4}-\d{2}-\d{2}$'
+    data_alta_aux = data["data_alta"]
+    if re.match(patro_data, data_alta_aux[:10]):
+        data_alta = data_alta_aux[:10]
+    else:
+        data_alta = data["data_alta"]
+    data_baixa_aux = data["data_baixa"]
+    if re.match(patro_data, data_baixa_aux[:10]):
+        data_baixa = data_baixa_aux[:10]
+    else:
+        data_baixa = data["data_baixa"]
+
     body = {
         "codi_aux": data["codi_aux"],
         "descripcio": data["descripcio"],
@@ -31,9 +44,9 @@ def create_docx(data):
         "servei_tecnic": data["servei_tecnic"],
         "telefon": data["telefon"],
         "img_1": img_1,
-        "data_alta": data["data_alta"],
+        "data_alta": data_alta,
         "condicions_equip": data["condicions_equip"],
-        "data_baixa": data["data_baixa"],
+        "data_baixa": data_baixa,
         "situacio_contractual": data["situacio_contractual"],
         "preu": data["preu"],
         "tipus": data["tipus"],
