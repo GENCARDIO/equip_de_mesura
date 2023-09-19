@@ -168,7 +168,7 @@
                 <thead style="text-align: center; font-size: 12;">
                   <tr style="background-color: rgb(174, 204, 231);">
                     <th>DATA ALTA</th>
-                    <th>Condicions</th>
+                    <th>Condicions de compra</th>
                     <th>Data Baixa</th>
                     <th>SITUACIÓ CONTRACTUAL</th>
                     <th>PREU</th>
@@ -179,11 +179,27 @@
                 <tbody style="font-size: 12;">
                   <tr>
                     <td><input type="text" name="data_alta" value="{{dades.data_alta}}"></td>
-                    <td><input type="text" name="condicions_equip" value="{{dades.condicions_equip}}"></td>
+                    <td>
+                      <select class="form" name="condicions_equip" id="select_condicions">
+                        <!-- <option value="{{dades.condicions_equip}}">{{dades.condicions_equip}}</option> -->
+                        <option value="Nou">Nou</option>
+                        <option value="Utilizat">Utilizat</option>
+                        <option value="Reacondicionat">Reacondicionat</option>
+                      </select>
+                    </td>
                     <td><input type="text" name="data_baixa" value="{{dades.data_baixa}}"></td>
                     <td><input type="text" name="situacio_contractual" value="{{dades.situacio_contractual}}"></td>
                     <td><input type="text" name="preu" value="{{dades.preu}}"></td>
-                    <td><input type="text" name="tipus" value="{{dades.tipus}}"></td>
+                    <td>
+                      <select class="form" name="tipus" id="select_tipus">
+                        <option value="ANALITZADOR">ANALITZADOR</option>
+                        <option value="AUX">AUX</option>
+                        <option value="INFORMATICA">INFORMATICA</option>
+                        <option value="OFICINA">OFICINA</option>
+                        <option value="ALTRES">ALTRES</option>
+                        <option value="FRED">FRED</option>
+                      </select>
+                    </td>
                     <td> <input type="file" id="imagenInput2" name="img_2" accept="image/*">
                       <img width="300px" height="200px" style="margin-top: 15px; margin-left: 25px;"
                         id="imagenMostrada2" src="">
@@ -588,6 +604,7 @@
   </form>
   </div>
 
+  <!-- Insertar fotos -->
   <script>
 
     const input = document.getElementById('imagenInput');
@@ -700,6 +717,58 @@
       });
     });
 
+  </script>
+
+  <!-- Desplegables Condicions -->
+  <script>
+    var miVariable = "{{dades.condicions_equip}}";
+    var select = document.getElementById("select_condicions");
+
+    // Verificar si la variable está en el select
+    var optionExists = false;
+    for (var i = 0; i < select.options.length; i++) {
+      if (select.options[i].value === miVariable) {
+        optionExists = true;
+        break;
+      }
+    }
+
+    // Si la variable no está en el select, agrégala como nueva opción
+    if (!optionExists) {
+      var newOption = document.createElement("option");
+      newOption.value = miVariable;
+      newOption.text = miVariable;
+      select.appendChild(newOption);
+    }
+
+    // Establecer la opción seleccionada en la variable (si existe)
+    select.value = miVariable;
+  </script>
+
+  <!-- Desplegable Tipus -->
+  <script>
+    var miVariable = "{{dades.tipus}}";
+    var select = document.getElementById("select_tipus");
+
+    // Verificar si la variable está en el select
+    var optionExists = false;
+    for (var i = 0; i < select.options.length; i++) {
+      if (select.options[i].value === miVariable) {
+        optionExists = true;
+        break;
+      }
+    }
+
+    // Si la variable no está en el select, agrégala como nueva opción
+    if (!optionExists) {
+      var newOption = document.createElement("option");
+      newOption.value = miVariable;
+      newOption.text = miVariable;
+      select.appendChild(newOption);
+    }
+
+    // Establecer la opción seleccionada en la variable (si existe)
+    select.value = miVariable;
   </script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

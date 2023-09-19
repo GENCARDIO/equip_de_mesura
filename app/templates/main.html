@@ -47,7 +47,8 @@
                                 id="searchInput" placeholder="Buscar per descripció"><br>
                             <select class="custom-select" id="opcions" name="opcions" style="width: 50%;">
                                 {% for equip in equips %}
-                                <option value="{{ equip.codi_aux }}">{{ equip.descripcio }} - {{equip.codi_aux}}
+                                <option value="{{ equip.codi_aux }}">{{ equip.descripcio }} - {{equip.codi_aux}} -
+                                    {{equip.codi_cgc}}
                                 </option>
                                 {% endfor %}
                             </select>
