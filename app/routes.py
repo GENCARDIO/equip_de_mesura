@@ -309,11 +309,13 @@ def receive_token():
         session['email'] = decoded_token.get('email_tok', 'Usuario no encontrado')
         session['idClient'] = decoded_token.get('id_client_tok', 'Usuario no encontrado')
         session['rol'] = decoded_token.get('rol_tok', 'Usuario no encontrado')
+        session['acronim'] = decoded_token.get('rol_tok', 'Usuario no encontrado')
         print(session['user'])
         print(session['rols'])
         print(session['email'])
         print(session['idClient'])
         print(session['rol'])
+        print(session['acronim'])
         return redirect('/')
     except Exception:
         return redirect('/logout')
@@ -322,7 +324,7 @@ def receive_token():
 @app.route('/apps')
 def apps():
     tocken_cookies = {'user_tok': session['user'], 'rols_tok': session['rols'], 'email_tok': session['email'],
-                      'id_client_tok': session['idClient'], 'rol_tok': 'None'}
+                      'id_client_tok': session['idClient'], 'rol_tok': 'None', 'acronim_tok': session['acronim']}
     secret_key = '12345'
     token = jwt.encode(tocken_cookies, secret_key, algorithm='HS256')
     url = f'{URL_HOME}apps/token?token={token}'

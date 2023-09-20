@@ -103,8 +103,13 @@
 
                     <div class="form-group">
                         <label>Condicions de l'equip a la recepció:</label>
-                        <input type="text" class="form-control" name="condicions_equip"
-                            placeholder="Introdueix les condicions del equip a la recepció">
+                        <select class="custom-select" name="condicions_equip">
+                            <option value="Nou">Nou</option>
+                            <option value="Utilizat">Utilizat</option>
+                            <option value="Reacondicionat">Reacondicionat</option>
+                        </select>
+                        <!-- <input type="text" class="form-control" name="condicions_equip" -->
+                        <!-- placeholder="Introdueix les condicions del equip a la recepció"> -->
                     </div>
 
                     <div class="form-group">
@@ -127,7 +132,15 @@
 
                     <div class="form-group">
                         <label>Tipus d'equip:</label>
-                        <input type="text" class="form-control" name="tipus" placeholder="Introdueix el tipus de equip">
+                        <!-- <input type="text" class="form-control" name="tipus" placeholder="Introdueix el tipus de equip"> -->
+                        <select class="custom-select" name="tipus">
+                            <option value="ANALITZADOR">ANALITZADOR</option>
+                            <option value="AUX">AUX</option>
+                            <option value="INFORMATICA">INFORMATICA</option>
+                            <option value="OFICINA">OFICINA</option>
+                            <option value="FRED">FRED</option>
+                            <option value="ALTRES">ALTRES</option>
+                        </select>
                     </div>
                 </div>
             </div>
