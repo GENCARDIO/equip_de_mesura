@@ -4,7 +4,7 @@ import os
 from app import app
 from app import utils
 from app import models
-from sqlalchemy import or_
+# from sqlalchemy import or_
 import jwt
 from functools import wraps
 
@@ -64,17 +64,13 @@ def generar_pdf():
 
     for key, value in request.form.items():
         data[key] = value
-    if 'img_' in request.files:
-        img_1 = request.files['img_1']
-        img_2 = request.files['img_2']
-        img_3 = request.files['img_3']
-        data["img_1"] = img_1.filename
-        data["img_2"] = img_2.filename
-        data["img_3"] = img_3.filename
-    else:
-        data["img_1"] = "logo3.jpg"
-        data["img_2"] = "logo3.jpg"
-        data["img_3"] = "logo3.jpg"
+
+    if data["img_1"] == '':
+        data["img_1"] = "no_foto.png"
+    if data["img_2"] == '':
+        data["img_2"] = "no_foto.png"
+    if data["img_3"] == '':
+        data["img_3"] = "no_foto.png"
 
     try:
 
