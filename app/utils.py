@@ -36,6 +36,11 @@ def create_docx(data):
     else:
         data_baixa = data["data_baixa"]
 
+    # Convertir NA a ""
+    for key, value in data.items():
+        if data[key] == "NA":
+            data[key] = ""
+
     body = {
         "codi_aux": data["codi_aux"],
         "descripcio": data["descripcio"],
