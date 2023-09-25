@@ -2,6 +2,7 @@ import pandas as pd
 from docxtpl import DocxTemplate, InlineImage
 from docx.shared import Mm
 import re
+from docx2pdf import convert
 
 
 def llegir_excel(path_excel):
@@ -89,12 +90,30 @@ def create_docx(data):
         "versio_2": data["versio_2"],
         "soft_3": data["soft_3"],
         "versio_3": data["versio_3"],
+        "soft_4": data["soft_4"],
+        "versio_4": data["versio_4"],
+        "soft_5": data["soft_5"],
+        "versio_5": data["versio_5"],
         "personal_tecnic_udmmp": data["personal_tecnic_udmmp"],
         "facultatius_udmmp": data["facultatius_udmmp"],
+        "personal_tecnic_udmmp_2": data["personal_tecnic_udmmp_2"],
+        "facultatius_udmmp_2": data["facultatius_udmmp_2"],
+        "personal_tecnic_udmmp_3": data["personal_tecnic_udmmp_3"],
+        "facultatius_udmmp_3": data["facultatius_udmmp_3"],
+        "personal_tecnic_udmmp_4": data["personal_tecnic_udmmp_4"],
+        "facultatius_udmmp_4": data["facultatius_udmmp_4"],
+        "personal_tecnic_udmmp_5": data["personal_tecnic_udmmp_5"],
+        "facultatius_udmmp_5": data["facultatius_udmmp_5"],
         "ref_fung1": data["ref_fung1"],
         "desc_fung1": data["desc_fung1"],
         "ref_fung2": data["ref_fung2"],
         "desc_fung2": data["desc_fung2"],
+        "ref_fung3": data["ref_fung3"],
+        "desc_fung3": data["desc_fung3"],
+        "ref_fung4": data["ref_fung4"],
+        "desc_fung4": data["desc_fung4"],
+        "ref_fung5": data["ref_fung5"],
+        "desc_fung5": data["desc_fung5"],
         "doc1": data["doc1"],
         "doc2": data["doc2"],
         "cont_manteniment": data["cont_manteniment"],
@@ -132,3 +151,9 @@ def create_docx(data):
     context = {"body": body}
     doc.render(context)
     doc.save("app/docx/" + report_name)
+
+
+def create_pdf(docx):
+
+    path_docx = ""
+    path_pdf = ""
