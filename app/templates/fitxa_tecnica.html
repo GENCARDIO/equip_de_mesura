@@ -146,8 +146,8 @@
                     <td><input type="text" name="serial_number" value="{{dades.serial_number}}"></td>
                     <td><input type="text" name="model" value="{{dades.model}}"></td>
                     <td><input type="text" name="emp_subministradora" value="{{dades.emp_subministradora}}"></td>
-                    <td><input type="text" name="servei_tecnic" value="XXXXXXXXX"></td>
-                    <td><input type="text" name="telefon" value="666666666"></td>
+                    <td><input type="text" name="servei_tecnic" value="NA"></td>
+                    <td><input type="text" name="telefon" value="NA"></td>
                     <td> <input type="file" id="imagenInput" name="img_1" accept="image/*">
                       <img width="300px" height="200px" style="margin-top: 15px; margin-left: 25px;" id="imagenMostrada"
                         src="">
@@ -236,7 +236,7 @@
                     <td><input type="text" name="alçada" value="{{dades.alçada}}"></td>
                     <td><input type="text" name="profunditat" value="{{dades.profunditat}}"></td>
                     <td><input type="text" name="pes" style="width: 60px;" value="{{dades.pes}}"></td>
-                    <td><input type="text" name="volum" style="width: 60px;" value="None"></td>
+                    <td><input type="text" name="volum" style="width: 60px;" value="{{dades.volum}}"></td>
                     <td><input type="text" name="condicions_ambientals" value="{{dades.condicions_ambientals}}"></td>
                     <td><input type="text" name="humitat" value="{{dades.humitat}}"></td>
                     <td><input type="text" name="presa_aigua" value="{{dades.presa_aigua}}"></td>
@@ -269,38 +269,38 @@
                   </tr>
                   <tr>
                     <td>Pantalla</td>
-                    <td><input type="text" name="marca_pantalla" value=""></td>
-                    <td><input type="text" name="model_pantalla" value=""></td>
-                    <td><input type="text" name="num_serie_pantalla" value=""></td>
-                    <td><input type="text" name="codi_pantalla" value=""></td>
+                    <td><input type="text" name="marca_pantalla" value="{{dades.marca_pantalla}}"></td>
+                    <td><input type="text" name="model_pantalla" value="{{dades.model_pantalla}}"></td>
+                    <td><input type="text" name="num_serie_pantalla" value="{{dades.num_serie_pantalla}}"></td>
+                    <td><input type="text" name="codi_pantalla" value="{{dades.codi_pantalla}}"></td>
                   </tr>
                   <tr>
                     <td>SAI</td>
-                    <td><input type="text" name="marca_sai" value=""></td>
-                    <td><input type="text" name="model_sai" value=""></td>
-                    <td><input type="text" name="num_serie_sai" value=""></td>
-                    <td><input type="text" name="codi_sai" value=""></td>
+                    <td><input type="text" name="marca_sai" value="{{dades.marca_sai}}"></td>
+                    <td><input type="text" name="model_sai" value="{{dades.model_sai}}"></td>
+                    <td><input type="text" name="num_serie_sai" value="{{dades.num_serie_sai}}"></td>
+                    <td><input type="text" name="codi_sai" value="{{dades.codi_sai}}"></td>
                   </tr>
                   <tr>
                     <td>Lector código de barras</td>
-                    <td><input type="text" name="marca_lector" value=""></td>
-                    <td><input type="text" name="model_lector" value=""></td>
-                    <td><input type="text" name="num_serie_lector" value=""></td>
-                    <td><input type="text" name="codi_lector" value=""></td>
+                    <td><input type="text" name="marca_lector" value="{{dades.marca_lector}}"></td>
+                    <td><input type="text" name="model_lector" value="{{dades.model_lector}}"></td>
+                    <td><input type="text" name="num_serie_lector" value="{{dades.num_serie_lector}}"></td>
+                    <td><input type="text" name="codi_lector" value="{{dades.codi_lector}}"></td>
                   </tr>
                   <tr>
                     <td>Impresora</td>
-                    <td><input type="text" name="marca_impresora" value=""></td>
-                    <td><input type="text" name="model_impresora" value=""></td>
-                    <td><input type="text" name="num_serie_impresora" value=""></td>
-                    <td><input type="text" name="codi_impresora" value=""></td>
+                    <td><input type="text" name="marca_impresora" value="{{dades.marca_impresora}}"></td>
+                    <td><input type="text" name="model_impresora" value="{{dades.model_impresora}}"></td>
+                    <td><input type="text" name="num_serie_impresora" value="{{dades.num_serie_impresora}}"></td>
+                    <td><input type="text" name="codi_impresora" value="{{dades.codi_impresora}}"></td>
                   </tr>
                   <tr>
                     <td>Tensión: 220V/50Hz <br> Potencia: 220W</td>
-                    <td><input type="text" name="marca_tensio" value=""></td>
-                    <td><input type="text" name="model_tensio" value=""></td>
-                    <td><input type="text" name="num_serie_tensio" value=""></td>
-                    <td><input type="text" name="codi_tensio" value=""></td>
+                    <td><input type="text" name="marca_tensio" value="{{dades.marca_tensio}}"></td>
+                    <td><input type="text" name="model_tensio" value="{{dades.model_tensio}}"></td>
+                    <td><input type="text" name="num_serie_tensio" value="{{dades.num_serie_tensio}}"></td>
+                    <td><input type="text" name="codi_tensio" value="{{dades.codi_tensio}}"></td>
                   </tr>
                   <tr>
                     <td></td>
@@ -311,23 +311,37 @@
                   </tr>
                   <tr>
                     <td>Software</td>
-                    <td><input type="text" name="soft_1" value=""></td>
+                    <td><input type="text" name="soft_1" value="{{dades.soft_1}}"></td>
                     <td>Versió</td>
-                    <td colspan="2"><input name="versio_1" type="text" value=""></td>
+                    <td colspan="2"><input name="versio_1" type="text" value="{{dades.versio_1}}"></td>
                     <td></td>
                   </tr>
                   <tr>
                     <td>Software</td>
-                    <td><input type="text" name="soft_2" value=""></td>
+                    <td><input type="text" name="soft_2" value="{{dades.soft_2}}"></td>
                     <td>Versió</td>
-                    <td colspan="2"><input name="versio_2" type="text" value=""></td>
+                    <td colspan="2"><input name="versio_2" type="text" value="{{dades.versio_2}}"></td>
                     <td></td>
                   </tr>
                   <tr>
                     <td>Software</td>
-                    <td><input type="text" name="soft_3" value=""></td>
+                    <td><input type="text" name="soft_3" value="{{dades.soft_3}}"></td>
                     <td>Versió</td>
-                    <td colspan="2"><input name="versio_3" type="text" value=""></td>
+                    <td colspan="2"><input name="versio_3" type="text" value="{{dades.versio_3}}"></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Software</td>
+                    <td><input type="text" name="soft_4" value="{{dades.soft_4}}"></td>
+                    <td>Versió</td>
+                    <td colspan="2"><input name="versio_4" type="text" value="{{dades.versio_4}}"></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Software</td>
+                    <td><input type="text" name="soft_5" value="{{dades.soft_5}}"></td>
+                    <td>Versió</td>
+                    <td colspan="2"><input name="versio_5" type="text" value="{{dades.versio_5}}"></td>
                     <td></td>
                   </tr>
                 </thead>
@@ -354,8 +368,34 @@
                     <td>Facultatius responsables de l'àrea UDMMP</td>
                   </tr>
                   <tr>
-                    <td><input type="text" name="personal_tecnic_udmmp" style="width: 300px;" value=""></td>
-                    <td><input type="text" name="facultatius_udmmp" style="width: 300px;" value=""></td>
+                    <td><input type="text" name="personal_tecnic_udmmp" style="width: 300px;"
+                        value="{{dades.personal_tecnic_udmmp}}"></td>
+                    <td><input type="text" name="facultatius_udmmp" style="width: 300px;"
+                        value="{{dades.facultatius_udmmp}}"></td>
+                  </tr>
+                  <tr>
+                    <td><input type="text" name="personal_tecnic_udmmp_2" style="width: 300px;"
+                        value="{{dades.personal_tecnic_udmmp_2}}"></td>
+                    <td><input type="text" name="facultatius_udmmp_2" style="width: 300px;"
+                        value="{{dades.facultatius_udmmp_2}}"></td>
+                  </tr>
+                  <tr>
+                    <td><input type="text" name="personal_tecnic_udmmp_3" style="width: 300px;"
+                        value="{{dades.personal_tecnic_udmmp_3}}"></td>
+                    <td><input type="text" name="facultatius_udmmp_3" style="width: 300px;"
+                        value="{{dades.facultatius_udmmp_3}}"></td>
+                  </tr>
+                  <tr>
+                    <td><input type="text" name="personal_tecnic_udmmp_4" style="width: 300px;"
+                        value="{{dades.personal_tecnic_udmmp_4}}"></td>
+                    <td><input type="text" name="facultatius_udmmp_4" style="width: 300px;"
+                        value="{{dades.facultatius_udmmp_4}}"></td>
+                  </tr>
+                  <tr>
+                    <td><input type="text" name="personal_tecnic_udmmp_5" style="width: 300px;"
+                        value="{{dades.personal_tecnic_udmmp_5}}"></td>
+                    <td><input type="text" name="facultatius_udmmp_5" style="width: 300px;"
+                        value="{{dades.facultatius_udmmp_5}}"></td>
                   </tr>
                 </tbody>
               </table>
@@ -377,12 +417,24 @@
                 </thead>
                 <tbody style="font-size: 12; text-align: center;">
                   <tr>
-                    <td><input type="text" name="ref_fung1" style="width: 300px;" value=""></td>
-                    <td><input type="text" name="desc_fung1" style="width: 300px;" value=""></td>
+                    <td><input type="text" name="ref_fung1" style="width: 300px;" value="{{dades.ref_fung1}}"></td>
+                    <td><input type="text" name="desc_fung1" style="width: 300px;" value="{{dades.desc_fung1}}"></td>
                   </tr>
                   <tr>
-                    <td><input type="text" name="ref_fung2" style="width: 300px;" value=""></td>
-                    <td><input type="text" name="desc_fung2" style="width: 300px;" value=""></td>
+                    <td><input type="text" name="ref_fung2" style="width: 300px;" value="{{dades.ref_fung2}}"></td>
+                    <td><input type="text" name="desc_fung2" style="width: 300px;" value="{{dades.desc_fung2}}"></td>
+                  </tr>
+                  <tr>
+                    <td><input type="text" name="ref_fung3" style="width: 300px;" value="{{dades.ref_fung3}}"></td>
+                    <td><input type="text" name="desc_fung3" style="width: 300px;" value="{{dades.desc_fung3}}"></td>
+                  </tr>
+                  <tr>
+                    <td><input type="text" name="ref_fung4" style="width: 300px;" value="{{dades.ref_fung4}}"></td>
+                    <td><input type="text" name="desc_fung4" style="width: 300px;" value="{{dades.desc_fung4}}"></td>
+                  </tr>
+                  <tr>
+                    <td><input type="text" name="ref_fung5" style="width: 300px;" value="{{dades.ref_fung5}}"></td>
+                    <td><input type="text" name="desc_fung5" style="width: 300px;" value="{{dades.desc_fung5}}"></td>
                   </tr>
                 </tbody>
               </table>
@@ -404,10 +456,10 @@
                 </thead>
                 <tbody style="font-size: 12; text-align: center;">
                   <tr>
-                    <td><input type="text" style="width: 300px;" name="doc1" value=""></td>
+                    <td><input type="text" style="width: 300px;" name="doc1" value="{{dades.doc1}}"></td>
                   </tr>
                   <tr>
-                    <td><input type="text" style="width: 300px;" name="doc2" value=""></td>
+                    <td><input type="text" style="width: 300px;" name="doc2" value="{{dades.doc2}}"></td>
                   </tr>
                 </tbody>
               </table>
@@ -424,31 +476,36 @@
                 <tbody style="font-size: 12;">
                   <tr>
                     <td>Contracte de Manteniment</td>
-                    <td><input type="text" name="cont_manteniment" style="font-weight: bold;" value=""></td>
+                    <td><input type="text" name="cont_manteniment" style="font-weight: bold;"
+                        value="{{dades.cont_manteniment}}"></td>
                   </tr>
                   <tr>
                     <td>Manteniment Preventiu Extern</td>
-                    <td><input type="text" name="manteniment_ext" style="font-weight: bold;" value=""></td>
+                    <td><input type="text" name="manteniment_ext" style="font-weight: bold;"
+                        value="{{dades.manteniment_ext}}"></td>
                   </tr>
                   <tr>
                     <td>Manteniment preventiu Intern</td>
-                    <td><input type="text" name="manteniment_int" style="font-weight: bold;" value=""></td>
+                    <td><input type="text" name="manteniment_int" style="font-weight: bold;"
+                        value="{{dades.manteniment_int}}"></td>
                   </tr>
                   <tr>
                     <td>Verificació Interna</td>
-                    <td><input type="text" name="verificacio_int" style="font-weight: bold;" value=""></td>
+                    <td><input type="text" name="verificacio_int" style="font-weight: bold;"
+                        value="{{dades.verificacio_int}}"></td>
                   </tr>
                   <tr>
                     <td>Verificació Externa</td>
-                    <td><input type="text" name="verificacio_ext" style="font-weight: bold;" value=""></td>
+                    <td><input type="text" name="verificacio_ext" style="font-weight: bold;"
+                        value="{{dades.verificacio_ext}}"></td>
                   </tr>
                   <tr>
                     <td>Calibració Externa</td>
-                    <td><input type="text" name="cal_ext" style="font-weight: bold;" value=""></td>
+                    <td><input type="text" name="cal_ext" style="font-weight: bold;" value="{{dades.cal_ext}}"></td>
                   </tr>
                   <tr>
                     <td>Calibració interna</td>
-                    <td><input type="text" name="cal_int" style="font-weight: bold;" value=""></td>
+                    <td><input type="text" name="cal_int" style="font-weight: bold;" value="{{dades.cal_int}}"></td>
                   </tr>
                 </tbody>
               </table>
@@ -460,7 +517,7 @@
               </p>
 
               <p style="margin-bottom: 10px; text-align: left; font-size: 15px;">Nom del contracte:
-                <input type="text" style="width: 400px;" name="nom_contracte" value="">
+                <input type="text" style="width: 400px;" name="nom_contracte" value="{{dades.nom_contracte}}">
               </p>
 
               <table class="table table-bordered">
@@ -473,14 +530,16 @@
                 </thead>
                 <tbody style="font-size: 12; text-align: center;">
                   <tr>
-                    <td><input type="text" style="width: 300px;" name="emp_respon1" value=""></td>
-                    <td><input type="text" style="width: 300px;" name="periode_cober1" value=""></td>
-                    <td><input type="text" style="width: 300px;" name="dades_cont1" value=""></td>
+                    <td><input type="text" style="width: 300px;" name="emp_respon1" value="{{dades.emp_respon1}}"></td>
+                    <td><input type="text" style="width: 300px;" name="periode_cober1" value="{{dades.periode_cober1}}">
+                    </td>
+                    <td><input type="text" style="width: 300px;" name="dades_cont1" value="{{dades.dades_cont1}}"></td>
                   </tr>
                   <tr>
-                    <td><input type="text" style="width: 300px;" name="emp_respon2" value=""></td>
-                    <td><input type="text" style="width: 300px;" name="periode_cober2" value=""></td>
-                    <td><input type="text" style="width: 300px;" name="dades_cont2" value=""></td>
+                    <td><input type="text" style="width: 300px;" name="emp_respon2" value="{{dades.emp_respon2}}"></td>
+                    <td><input type="text" style="width: 300px;" name="periode_cober2" value="{{dades.periode_cober2}}">
+                    </td>
+                    <td><input type="text" style="width: 300px;" name="dades_cont2" value="{{dades.dades_cont2}}"></td>
                   </tr>
                 </tbody>
               </table>
@@ -502,11 +561,13 @@
                 </thead>
                 <tbody style="font-size: 12; text-align: center;">
                   <tr>
-                    <td><input type="text" style="width: 300px;" name="emp_respon_prev_ext" value="Lifetechnologies">
+                    <td><input type="text" style="width: 300px;" name="emp_respon_prev_ext"
+                        value="{{dades.emp_respon_prev_ext}}">
                     </td>
-                    <td><input type="text" style="width: 300px;" name="periodicitat_prev_ext" value="Cada 3 anys"></td>
-                    <td><input type="text" style="width: 300px;" name="cont_prev_ext"
-                        value="life@technologies / 654654654"></td>
+                    <td><input type="text" style="width: 300px;" name="periodicitat_prev_ext"
+                        value="{{dades.periodicitat_prev_ext}}"></td>
+                    <td><input type="text" style="width: 300px;" name="cont_prev_ext" value="{{dades.cont_prev_ext}}">
+                    </td>
                   </tr>
                   <tr>
                 </tbody>
@@ -516,18 +577,19 @@
                 <thead style="text-align: center; font-size: 12;">
                   <tr>
                     <th>Mateniment</th>
-                    <th><input type="text" style="text-align: center; font-weight: bold;" name="mant_prev_ext" value="">
+                    <th><input type="text" style="text-align: center; font-weight: bold;" name="mant_prev_ext"
+                        value="{{dades.mant_prev_ext}}">
                     </th>
                   </tr>
                   <tr>
                     <th>Verificació</th>
                     <th><input type="text" style="text-align: center; font-weight: bold;" name="verif_prev_ext"
-                        value=""></th>
+                        value="{{dades.verif_prev_ext}}"></th>
                   </tr>
                   <tr>
                     <th>Calibratge</th>
                     <th><input type="text" style="text-align: center; font-weight: bold;" name="calib_prev_ext"
-                        value="X"></th>
+                        value="{{dades.calib_prev_ext}}"></th>
                   </tr>
                 </thead>
               </table>
@@ -536,26 +598,26 @@
               </p>
 
               <p style="margin-bottom: 10px; text-align: left; font-size: 15px;">Marges d'acceptació:
-                <input type="text" style="width: 300px;" name="marges_accept_prev_ext" value="">
+                <input type="text" style="width: 300px;" name="marges_accept_prev_ext"
+                  value="{{dades.marges_accept_prev_ext}}">
               </p>
 
               <br>
 
               <p style="margin-bottom: 10px; font-weight: bold; text-align: left; font-size: 15px;">DESCRIPCIÓ
-                MANTENIMENT
-                PREVENTIU INTERN:
+                MANTENIMENT PREVENTIU INTERN:
               </p>
 
               <p style="margin-bottom: 10px; text-align: left; font-size: 15px; width: 300px;">Descripció:
-                <input type="text" value="" name="desc_prev_int">
+                <input type="text" value="{{dades.desc_prev_int}}" name="desc_prev_int">
               </p>
 
               <p style="margin-bottom: 10px; text-align: left; font-size: 15px; width: 300px;">Periodicitat:
-                <input type="text" value="" name="periodicitat_prev_int">
+                <input type="text" value="{{dades.periodicitat_prev_int}}" name="periodicitat_prev_int">
               </p>
 
               <p style="margin-bottom: 10px; text-align: left; font-size: 15px;">Marges d'acceptació:
-                <input type="text" value="" name="marges_accept_prev_int">
+                <input type="text" value="{{dades.marges_accept_prev_int}}" name="marges_accept_prev_int">
               </p>
 
               <br>
@@ -566,15 +628,15 @@
               </p>
 
               <p style="margin-bottom: 10px; text-align: left; font-size: 15px; width: 300px;">Descripció:
-                <input type="text" value="" name="desc_verif_int">
+                <input type="text" value="{{dades.desc_verif_int}}" name="desc_verif_int">
               </p>
 
               <p style="margin-bottom: 10px; text-align: left; font-size: 15px; width: 300px;">Periodicitat:
-                <input type="text" value="" name="periodicitat_verif_int">
+                <input type="text" value="{{dades.periodicitat_verif_int}}" name="periodicitat_verif_int">
               </p>
 
               <p style="margin-bottom: 10px; text-align: left; font-size: 15px;">Marges d'acceptació:
-                <input type="text" value="" name="marges_accept_verif_int">
+                <input type="text" value="{{dades.marges_accept_verif_int}}" name="marges_accept_verif_int">
               </p>
 
               <br>
@@ -585,15 +647,15 @@
               </p>
 
               <p style="margin-bottom: 10px; text-align: left; font-size: 15px; width: 300px;">Descripció:
-                <input type="text" value="" name="calib_desc_int">
+                <input type="text" value="{{dades.calib_desc_int}}" name="calib_desc_int">
               </p>
 
               <p style="margin-bottom: 10px; text-align: left; font-size: 15px; width: 300px;">Periodicitat:
-                <input type="text" value="" name="calib_periodicitat_int">
+                <input type="text" value="{{dades.calib_periodicitat_int}}" name="calib_periodicitat_int">
               </p>
 
               <p style="margin-bottom: 10px; text-align: left; font-size: 15px;">Marges d'acceptació:
-                <input type="text" value="" name="calib_marges_accept_int">
+                <input type="text" value="{{dades.calib_marges_accept_int}}" name="calib_marges_accept_int">
               </p>
 
             </div>
@@ -604,7 +666,7 @@
   </form>
   </div>
 
-  <!-- Insertar fotos -->
+  <!-- Insertar fotos i afegir files a les taules -->
   <script>
 
     const input = document.getElementById('imagenInput');
@@ -662,60 +724,6 @@
     window.addEventListener('load', () => mostrarImagen(input, imagenMostrada));
     window.addEventListener('load', () => mostrarImagen(input2, imagenMostrada2));
     window.addEventListener('load', () => mostrarImagen(input3, imagenMostrada3));
-
-    // Afegir cel·la 'personal responsable'
-    document.addEventListener("DOMContentLoaded", function () {
-      var tabla = document.getElementById("miTabla");
-
-      tabla.addEventListener("click", function (event) {
-        // Verificar si se hizo clic en la última fila
-        if (event.target.parentNode.parentNode === tabla.lastElementChild) {
-          // Crear una nueva fila
-          var nuevaFila = document.createElement("tr");
-
-          // Agregar celdas a la nueva fila
-          for (var i = 0; i < 2; i++) {
-            var nuevaCelda = document.createElement("td");
-            var nuevoInput = document.createElement("input");
-            nuevoInput.setAttribute("type", "text");
-            nuevoInput.setAttribute("name", "personal_tecnic_udmmp_facultatius_" + i.toString())
-            nuevoInput.style.width = "300px";
-            nuevaCelda.appendChild(nuevoInput);
-            nuevaFila.appendChild(nuevaCelda);
-          }
-
-          // Agregar la nueva fila al final de la tabla
-          tabla.lastElementChild.appendChild(nuevaFila);
-        }
-      });
-    });
-
-    // Afegir cel·la 'fungible'
-    document.addEventListener("DOMContentLoaded", function () {
-      var tabla = document.getElementById("miTabla2");
-
-      tabla.addEventListener("click", function (event) {
-        // Verificar si se hizo clic en la última fila
-        if (event.target.parentNode.parentNode === tabla.lastElementChild) {
-          // Crear una nueva fila
-          var nuevaFila = document.createElement("tr");
-
-          // Agregar celdas a la nueva fila
-          for (var i = 0; i < 2; i++) {
-            var nuevaCelda = document.createElement("td");
-            var nuevoInput = document.createElement("input");
-            nuevoInput.setAttribute("type", "text");
-            nuevoInput.setAttribute("name", "ref_desc_fung_" + i.toString());
-            nuevoInput.style.width = "300px";
-            nuevaCelda.appendChild(nuevoInput);
-            nuevaFila.appendChild(nuevaCelda);
-          }
-
-          // Agregar la nueva fila al final de la tabla
-          tabla.lastElementChild.appendChild(nuevaFila);
-        }
-      });
-    });
 
   </script>
 
