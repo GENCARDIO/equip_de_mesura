@@ -184,10 +184,13 @@ def generar_pdf():
         equip.calib_marges_accept_int = data["calib_marges_accept_int"]
         models.session.commit()
 
-        # Generar PDF
-        utils.create_docx(data)
+        # Generar DOCX i PDF
+        path_docx, report_name = utils.create_docx(data)
+        utils.create_pdf(path_docx, report_name)
+        path_pdf = "pdfs/" + report_name + ".pdf"
+        # path_zip = utils.zip_files(path_docx, path_pdf, report_name)
 
-        return send_file("docx/" + data['codi_aux'] + ".docx")
+        return send_file(path_pdf, as_attachment=True)
 
     except Exception:
         flash("No s'ha creat el pdf, error intern!", "warning")

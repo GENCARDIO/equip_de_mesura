@@ -2,7 +2,9 @@ import pandas as pd
 from docxtpl import DocxTemplate, InlineImage
 from docx.shared import Mm
 import re
-from docx2pdf import convert
+import subprocess
+import zipfile
+from flask import send_file
 
 
 def llegir_excel(path_excel):
@@ -151,9 +153,25 @@ def create_docx(data):
     context = {"body": body}
     doc.render(context)
     doc.save("app/docx/" + report_name)
+    return "app/docx/" + report_name, data["codi_aux"]
 
 
-def create_pdf(docx):
+def create_pdf(docx, report_name):
 
-    path_docx = ""
-    path_pdf = ""
+    path_docx = docx
+    path_pdf = "app/pdfs/" + report_name + ".pdf"
+
+    subprocess.run(["unoconv", "-f", "pdf", "-o", path_pdf, path_docx])
+
+
+def zip_files(file, file_2, zip_name):
+
+    arxius = [file, file_2]
+    zip = zip_name + ".zip"
+    path_zip = "zips/" + zip
+
+    with zipfile.ZipFile(path_zip, 'w') as arxiu_zip:
+        for arxiu in arxius:
+            arxiu_zip.write(arxiu)
+
+    return send_file(path_zip, as_attachment=True)
