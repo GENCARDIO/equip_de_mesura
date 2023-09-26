@@ -15,7 +15,7 @@ main_dir = os.path.dirname(os.path.abspath(__file__))
 # URL_GLOBAL = "http://172.16.82.47:8000/api_fastq/"
 
 # Develop Alex
-URL_HOME = "http://172.16.82.45:5000"
+URL_HOME = "http://172.16.82.45:5000/"
 # URL_GLOBAL = "http://172.16.82.45:8000/api_fastq/"
 
 

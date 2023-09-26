@@ -317,7 +317,7 @@ def logout():
     return redirect(url)
 
 
-@app.route('/receive_token')
+@app.route('/receive_token', methods=["POST", "GET"])
 def receive_token():
     received_token = request.args.get('token')
     secret_key = '12345'  # Debe ser la misma clave utilizada para generar el token
@@ -341,7 +341,7 @@ def receive_token():
         return redirect('/logout')
 
 
-@app.route('/apps')
+@app.route('/apps', methods=["POST", "GET"])
 def apps():
     tocken_cookies = {'user_tok': session['user'], 'rols_tok': session['rols'], 'email_tok': session['email'],
                       'id_client_tok': session['idClient'], 'rol_tok': 'None', 'acronim_tok': session['acronim']}
