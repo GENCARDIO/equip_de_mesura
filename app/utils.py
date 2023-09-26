@@ -153,6 +153,8 @@ def create_docx(data):
         "calib_desc_int": data["calib_desc_int"],
         "calib_periodicitat_int": data["calib_periodicitat_int"],
         "calib_marges_accept_int": data["calib_marges_accept_int"],
+        "data_modificacio": data["data_modificacio"],
+        "versio_doc": data["versio_doc"]
     }
 
     context = {"body": body}
