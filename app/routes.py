@@ -48,7 +48,7 @@ def fitxa_tecnica():
     """
 
     try:
-        equip = request.form['opcions']
+        equip = request.form['codi']
         dades = models.session.query(models.Fitxes).filter(models.Fitxes.codi_aux == equip).first()
         return render_template("fitxa_tecnica.html", dades=dades)
 

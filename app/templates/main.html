@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fitxes Tecniques - Equipss de Mesura</title>
+    <title>Fitxes Tecniques - Equips de Mesura</title>
 </head>
 
 <body>
@@ -27,74 +27,79 @@
         </div>
     </div>
 
-    <div class="container" style="width: 50%; margin: 0 auto; margin-bottom: 20px;">
+    <div class="container" style="width: 90%; margin: 0 auto;">
+
         <div class="row">
             <!-- Título -->
             <div class="col-12">
-                <h1 class="text-center" style="margin-top: 30px; color: #fcc664; font-weight: bold;">
+                <h1 class="text-center"
+                    style="margin-top: 15px; font-weight: bold; background: linear-gradient(15deg, #357ca5 0%, #60cec1 100%); background-clip: text; color: transparent;">
                     EQUIPS DE MESURA
                 </h1>
                 <hr>
             </div>
 
-            <!-- Seleccionar equipo -->
-            <div class="col-12">
-                <div class="card card-body border-1 m-1" style="background-color:#EDEDED; text-align: center;">
-                    <div class="card-body text-center">
-                        <h6 class="card-title font-weight-bold">Selecciona un equip</h6>
-                        <form action="/fitxa_tecnica" method="post">
-                            <input class="custom-select" style="width: 50%; margin-bottom: 5px;" type="text"
-                                id="searchInput" placeholder="Buscar per descripció"><br>
-                            <select class="custom-select" id="opcions" name="opcions" style="width: 50%;">
-                                {% for equip in equips %}
-                                <option value="{{ equip.codi_aux }}">{{ equip.descripcio }} - {{equip.codi_aux}} -
-                                    {{equip.codi_cgc}}
-                                </option>
-                                {% endfor %}
-                            </select>
-                            <br>
-                            <input style="margin-top: 20px; margin-right: 40px;" type="submit" class="btn btn-success"
-                                value="Enviar">
-                            <a style="margin-top: 20px;" class="btn btn-primary" href="/form_afegir_equip">Afegir
-                                equip</a>
-                        </form>
-                    </div>
+            <!-- Taula -->
+            <form action="/fitxa_tecnica" method="post">
+                <div class="table-responsive" style="width: 100%;">
+                    <table class="table table-bordered" style="text-align: center;" id="example">
+                        <thead style="background-image: linear-gradient(15deg, #357ca5 0%, #60cec1 100%);">
+                            <tr>
+                                <th>Codi Aux</th>
+                                <th style="width: 20%;">Codi CGC</th>
+                                <th>Serial Number</th>
+                                <th>Descripció</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for equip in equips %}
+                            <tr>
+                                <td>{{equip.codi_aux}}</td>
+                                <td>{{equip.codi_cgc}}</td>
+                                <td>{{equip.serial_number}}</td>
+                                <td>{{equip.descripcio}}</td>
+                                <td>
+                                    <button type="submit" style="background: none; border: none;">
+                                        <i class="fa-solid fa-file-pdf" style="color: #2ec242;"></i>
+                                    </button>
+                                </td>
+                                <input type="hidden" name="codi" value="{{equip.codi_aux}}">
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
-            </div>
+
+            </form>
         </div>
     </div>
 
     <script>
-        // Función para filtrar opciones en tiempo real
-        document.getElementById("searchInput").addEventListener("input", function () {
-            var input, filter, dropdown, options, option, i, txtValue;
-            input = document.getElementById("searchInput");
-            filter = input.value.toUpperCase();
-            dropdown = document.getElementById("opcions");
-            options = dropdown.getElementsByTagName("option");
-            var found = false; // Para verificar si se encontraron coincidencias
+        $(document).ready(function () {
+            // Setup - add a text input to each footer cell
+            $('#example thead tr').clone(true).appendTo('#example thead');
+            $('#example thead tr:eq(1) th').each(function (i) {
+                var title = $(this).text();
+                if (title !== '') {
+                    $(this).html('<input type="text" placeholder="Search ' + title + '"/>');
+                    $('input', this).on('keyup change', function () {
 
-            for (i = 0; i < options.length; i++) {
-                option = options[i];
-                txtValue = option.textContent || option.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    option.style.display = "";
-                    found = true; // Hay al menos una coincidencia
-                } else {
-                    option.style.display = "none";
+                        if (table.column(i).search() !== this.value) {
+                            table
+                                .column(i)
+                                .search(this.value)
+                                .draw();
+                        }
+                    });
                 }
-            }
+            });
 
-            // Cambiar la primera opción cuando se escriba
-            if (found) {
-                var firstOption = dropdown.querySelector("option:not([style='display: none;'])");
-                if (firstOption) {
-                    dropdown.value = firstOption.value;
-                }
-            } else {
-                // Si no se encontraron coincidencias, mostrar "No disponible"
-                dropdown.value = "No Disponible";
-            }
+            var table = $('#example').DataTable({
+                order: [[0, 'asc']],
+                orderCellsTop: true,
+                fixedHeader: true
+            });
         });
     </script>
 </body>
