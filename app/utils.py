@@ -155,6 +155,7 @@ def create_docx(data):
         "calib_marges_accept_int": data["calib_marges_accept_int"],
         "data_modificacio": data["data_modificacio"],
         "versio_doc": data["versio_doc"]
+        # "motiu_modificacio": data["motiu_modificacio"]
     }
 
     context = {"body": body}
