@@ -38,7 +38,7 @@ def inici():
 
 
 # Ruta per seleccionar les files de les mostres
-@app.route("/fitxa_tecnica", methods=["POST", "GET"])
+@app.route("/fitxa_tecnica", methods=["POST"])
 def fitxa_tecnica():
     """
     Redirecciona l'html principal per afegir l'arxiu d'input.
@@ -48,7 +48,8 @@ def fitxa_tecnica():
     """
 
     try:
-        equip = request.form['codi']
+        equip = request.form['codi_aux']
+        print(equip)
         dades = models.session.query(models.Fitxes).filter(models.Fitxes.codi_aux == equip).first()
         return render_template("fitxa_tecnica.html", dades=dades)
 
@@ -184,6 +185,7 @@ def generar_pdf():
         equip.calib_desc_int = data["calib_desc_int"]
         equip.calib_periodicitat_int = data["calib_periodicitat_int"]
         equip.calib_marges_accept_int = data["calib_marges_accept_int"]
+        equip.motiu_modificacio = data["motiu_modificacio"]
         models.session.commit()
 
         # Generar DOCX i PDF
@@ -271,6 +273,24 @@ def afegir_equip():
     except Exception:
         flash("Error al afegir", "warning")
         return redirect("/form_afegir_equip")
+
+
+# Historic
+@app.route("/historic")
+def historic():
+    equips = models.session.query(models.Fitxes).filter(models.Fitxes.codi_aux.like('EIM%'),
+                                                        models.Fitxes.motiu_modificacio.isnot(None),
+                                                        models.Fitxes.motiu_modificacio != '').all()
+
+    return render_template("historic.html", equips=equips)
+
+
+# Historic PDF
+@app.route("/historic_pdf", methods=["POST"])
+def historic_pdf():
+    codi_equip = request.form['codi']
+    path_pdf = "pdfs/" + codi_equip + ".pdf"
+    return send_file(path_pdf, as_attachment=True)
 
 
 @app.route('/guardar_imagen', methods=['POST'])

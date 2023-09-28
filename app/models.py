@@ -129,6 +129,7 @@ class Fitxes(Base):
     calib_marges_accept_int = Column(String())
     data_modificacio = Column(String())
     versio_doc = Column(String())
+    motiu_modificacio = Column(String())
 
 
 if not database_exists(engine.url):

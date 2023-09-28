@@ -5,7 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fitxes Tecniques - Equips de Mesura</title>
+    <title>Historic</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 </head>
 
 <body>
@@ -27,54 +29,57 @@
         </div>
     </div>
 
-    <div class="container" style="width: 90%; margin: 0 auto;">
+    <div class="container-fluid" style="width: 75%; margin: 0 auto;">
 
         <div class="row">
             <!-- Título -->
             <div class="col-12">
                 <h1 class="text-center"
                     style="margin-top: 15px; font-weight: bold; background: linear-gradient(15deg, #357ca5 0%, #60cec1 100%); -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent;">
-                    EQUIPS DE MESURA
+                    HISTORIC
                 </h1>
                 <hr>
-            </div>
 
-            <!-- Taula -->
-            <div class="table-responsive" style="width: 100%;">
-                <table class="table table-bordered" style="text-align: center;" id="example">
-                    <thead style="background-image: linear-gradient(15deg, #357ca5 0%, #60cec1 100%);">
-                        <tr>
-                            <th>Codi Aux</th>
-                            <th style="width: 20%;">Codi CGC</th>
-                            <th>Serial Number</th>
-                            <th>Descripció</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for equip in equips %}
-                        <tr>
-                            <form action="/fitxa_tecnica" method="post">
+                <!-- Taula -->
+                <div class="table-responsive">
+                    <table class="table table-bordered" style="text-align: center; width: 99%;" id="example">
+                        <thead style="background-image: linear-gradient(15deg, #357ca5 0%, #60cec1 100%);">
+                            <tr>
+                                <th>Codi Aux</th>
+                                <th>Codi CGC</th>
+                                <th>Data Modificació</th>
+                                <th>Motiu Modificació</th>
+                                <th>Versió Doc</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for equip in equips %}
+                            <tr>
+                                <form action="/historic_pdf" method="post">
+                                    <input type="hidden" name="codi" value="{{equip.codi_aux}}">
 
-                                <input type="hidden" name="codi_aux" value="{{equip.codi_aux}}">
-                                <td>{{equip.codi_aux}}</td>
-                                <td>{{equip.codi_cgc}}</td>
-                                <td>{{equip.serial_number}}</td>
-                                <td>{{equip.descripcio}}</td>
-                                <td>
-                                    <button type="submit" style="background: none; border: none;">
-                                        <i class="fa-solid fa-file-pdf" style="color: #2ec242;"></i>
-                                    </button>
-                                </td>
-                            </form>
+                                    <td>{{equip.codi_aux}}</td>
+                                    <td>{{equip.codi_cgc}}</td>
+                                    <td>{{equip.data_modificacio}}</td>
+                                    <td>{{equip.motiu_modificacio}}</td>
+                                    <td>{{equip.versio_doc}}</td>
+                                    <td>
+                                        <button type="submit" style="background: none; border: none;">
+                                            <i class="fa-solid fa-file-pdf" style="color: #2ec242;"></i>
+                                        </button>
+                                    </td>
+                                </form>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
 
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
             </div>
 
         </div>
+
     </div>
 
     <script>
@@ -105,6 +110,4 @@
         });
     </script>
 </body>
-
-</html>
 {% endblock content %}
