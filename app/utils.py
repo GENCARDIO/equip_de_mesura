@@ -16,10 +16,16 @@ def llegir_excel(path_excel):
 
 def create_docx(data):
 
+    desc_img_0 = ""
+    desc_img_1 = ""
+    desc_img_2 = ""
+    desc_img_3 = ""
+    desc_img_4 = ""
+    desc_img_5 = ""
+
     doc = DocxTemplate("app/templates/fitxa_tecnica_template.docx")
     report_name = data["codi_aux"] + ".docx"
 
-    # print(data["img_1"])
     img_1 = InlineImage(doc, image_descriptor='app/static/' + data["img_1"], width=Mm(20), height=Mm(20))
     img_2 = InlineImage(doc, image_descriptor='app/static/' + data["img_2"], width=Mm(20), height=Mm(20))
     img_3 = InlineImage(doc, image_descriptor='app/static/' + data["img_3"], width=Mm(20), height=Mm(20))
@@ -154,13 +160,63 @@ def create_docx(data):
         "calib_periodicitat_int": data["calib_periodicitat_int"],
         "calib_marges_accept_int": data["calib_marges_accept_int"],
         "data_modificacio": data["data_modificacio"],
-        "versio_doc": data["versio_doc"]
+        "versio_doc": data["versio_doc"],
         # "motiu_modificacio": data["motiu_modificacio"]
     }
 
     context = {"body": body}
     doc.render(context)
     doc.save("app/docx/" + report_name)
+
+    # Imatges Descripcio
+    doc_aux = DocxTemplate("app/docx/" + report_name)
+
+    if "desc_img_0" in data:
+        if data["desc_img_0"] == "":
+            pass
+        else:
+            desc_img_0 = InlineImage(doc_aux, image_descriptor='app/static/' + data["desc_img_0"], width=Mm(50), height=Mm(30))
+
+    if "desc_img_1" in data:
+        if data["desc_img_1"] == "":
+            pass
+        else:
+            desc_img_1 = InlineImage(doc_aux, image_descriptor='app/static/' + data["desc_img_1"], width=Mm(50), height=Mm(30))
+
+    if "desc_img_2" in data:
+        if data["desc_img_2"] == "":
+            pass
+        else:
+            desc_img_2 = InlineImage(doc_aux, image_descriptor='app/static/' + data["desc_img_2"], width=Mm(50), height=Mm(30))
+
+    if "desc_img_3" in data:
+        if data["desc_img_3"] == "":
+            pass
+        else:
+            desc_img_3 = InlineImage(doc_aux, image_descriptor='app/static/' + data["desc_img_3"], width=Mm(50), height=Mm(30))
+
+    if "desc_img_4" in data:
+        if data["desc_img_4"] == "":
+            pass
+        else:
+            desc_img_4 = InlineImage(doc_aux, image_descriptor='app/static/' + data["desc_img_4"], width=Mm(50), height=Mm(30))
+
+    if "desc_img_5" in data:
+        if data["desc_img_5"] == "":
+            pass
+        else:
+            desc_img_5 = InlineImage(doc_aux, image_descriptor='app/static/' + data["desc_img_5"], width=Mm(50), height=Mm(30))
+
+    descripcio = {"desc_img_0": desc_img_0,
+                  "desc_img_1": desc_img_1,
+                  "desc_img_2": desc_img_2,
+                  "desc_img_3": desc_img_3,
+                  "desc_img_4": desc_img_4,
+                  "desc_img_5": desc_img_5}
+    context_desc = {"descripcio": descripcio}
+    doc_aux.render(context=context_desc)
+    doc_aux.save("app/docx/" + report_name)
+
     return "app/docx/" + report_name, data["codi_aux"]
 
 

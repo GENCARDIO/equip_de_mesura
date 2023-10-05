@@ -3,6 +3,7 @@
 {% block content %}
 
 <head>
+
   <style>
     /* Estilos para el popup */
     .popup {
@@ -594,7 +595,15 @@
                 </thead>
               </table>
 
-              <p style="margin-bottom: 10px; font-weight: bold; text-align: left; font-size: 15px;">DESCRIPCIÓ:
+              <br>
+              <p style="font-weight: bold;">(PER INSERTAR IMATGES: CARREGAR LES IMATGES EN ORDRE DE LECTURA I POSAR EL
+                TAG
+                {{ "{{descripcio.desc_img_0}}" }}
+                I PUJAR EL CONTADOR AMB EL MATEIX NUMERO DE IMATGES)</p>
+
+              <p style="margin-bottom: 10px; font-weight: bold; text-align: left; font-size: 15px;">
+                DESCRIPCIÓ:
+                <input type="file" name="imagenes[]" id="input_desc" style="width: 20%; margin-left: 5px;" multiple>
               </p>
 
               <p style="margin-bottom: 10px; text-align: left; font-size: 15px;">Marges d'acceptació: <br>
@@ -659,6 +668,7 @@
                   name="calib_marges_accept_int">{{dades.calib_marges_accept_int}}</textarea>
               </p>
 
+
             </div>
           </div>
         </div>
@@ -680,6 +690,7 @@
       </div>
   </form>
   </div>
+
 
   <!-- Insertar fotos i afegir files a les taules -->
   <script>
@@ -792,6 +803,31 @@
 
     // Establecer la opción seleccionada en la variable (si existe)
     select.value = miVariable;
+  </script>
+
+  <!-- Guardar imagen ultimo input file -->
+  <script>
+    document.getElementById('input_desc').addEventListener('change', function (e) {
+      var files = e.target.files;
+
+      if (files && files.length > 0) {
+        var formData = new FormData();
+        for (var i = 0; i < files.length; i++) {
+          formData.append('imagenes[]', files[i]);
+        }
+
+        fetch('/guardar_imagenes_desc', {
+          method: 'POST',
+          body: formData,
+        })
+          .then(response => {
+            // Manejar la respuesta del servidor aquí si es necesario
+          })
+          .catch(error => {
+            console.error('Error al enviar las imágenes:', error);
+          });
+      }
+    });
   </script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
