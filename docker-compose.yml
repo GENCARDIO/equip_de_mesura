@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+  fitxes_tecniques:
+    image: fitxes_tecniques:latest
+    ports:
+      - "5020:5020"
+    networks:
+      - default
+    volumes:
+      - /home/gencardio/Escriptori/volums_fitxes_tecniques:/app/volums_fitxes_tecniques

@@ -26,9 +26,9 @@ def create_docx(data):
     doc = DocxTemplate("app/templates/fitxa_tecnica_template.docx")
     report_name = data["codi_aux"] + ".docx"
 
-    img_1 = InlineImage(doc, image_descriptor='app/static/' + data["img_1"], width=Mm(20), height=Mm(20))
-    img_2 = InlineImage(doc, image_descriptor='app/static/' + data["img_2"], width=Mm(20), height=Mm(20))
-    img_3 = InlineImage(doc, image_descriptor='app/static/' + data["img_3"], width=Mm(20), height=Mm(20))
+    img_1 = InlineImage(doc, image_descriptor='/app/volums_fitxes_tecniques/static/' + data["img_1"], width=Mm(20), height=Mm(20))
+    img_2 = InlineImage(doc, image_descriptor='/app/volums_fitxes_tecniques/static/' + data["img_2"], width=Mm(20), height=Mm(20))
+    img_3 = InlineImage(doc, image_descriptor='/app/volums_fitxes_tecniques/static/' + data["img_3"], width=Mm(20), height=Mm(20))
 
     patro_data = r'^\d{4}-\d{2}-\d{2}$'
     data_alta_aux = data["data_alta"]
@@ -166,46 +166,46 @@ def create_docx(data):
 
     context = {"body": body}
     doc.render(context)
-    doc.save("app/docx/" + report_name)
+    doc.save("/app/volums_fitxes_tecniques/docx/" + report_name)
 
     # Imatges Descripcio
-    doc_aux = DocxTemplate("app/docx/" + report_name)
+    doc_aux = DocxTemplate("/app/volums_fitxes_tecniques/docx/" + report_name)
 
     if "desc_img_0" in data:
         if data["desc_img_0"] == "":
             pass
         else:
-            desc_img_0 = InlineImage(doc_aux, image_descriptor='app/static/' + data["desc_img_0"], width=Mm(50), height=Mm(30))
+            desc_img_0 = InlineImage(doc_aux, image_descriptor='/app/volums_fitxes_tecniques/static/' + data["desc_img_0"], width=Mm(50), height=Mm(30))
 
     if "desc_img_1" in data:
         if data["desc_img_1"] == "":
             pass
         else:
-            desc_img_1 = InlineImage(doc_aux, image_descriptor='app/static/' + data["desc_img_1"], width=Mm(50), height=Mm(30))
+            desc_img_1 = InlineImage(doc_aux, image_descriptor='/app/volums_fitxes_tecniques/static/' + data["desc_img_1"], width=Mm(50), height=Mm(30))
 
     if "desc_img_2" in data:
         if data["desc_img_2"] == "":
             pass
         else:
-            desc_img_2 = InlineImage(doc_aux, image_descriptor='app/static/' + data["desc_img_2"], width=Mm(50), height=Mm(30))
+            desc_img_2 = InlineImage(doc_aux, image_descriptor='/app/volums_fitxes_tecniques/static/' + data["desc_img_2"], width=Mm(50), height=Mm(30))
 
     if "desc_img_3" in data:
         if data["desc_img_3"] == "":
             pass
         else:
-            desc_img_3 = InlineImage(doc_aux, image_descriptor='app/static/' + data["desc_img_3"], width=Mm(50), height=Mm(30))
+            desc_img_3 = InlineImage(doc_aux, image_descriptor='/app/volums_fitxes_tecniques/static/' + data["desc_img_3"], width=Mm(50), height=Mm(30))
 
     if "desc_img_4" in data:
         if data["desc_img_4"] == "":
             pass
         else:
-            desc_img_4 = InlineImage(doc_aux, image_descriptor='app/static/' + data["desc_img_4"], width=Mm(50), height=Mm(30))
+            desc_img_4 = InlineImage(doc_aux, image_descriptor='/app/volums_fitxes_tecniques/static/' + data["desc_img_4"], width=Mm(50), height=Mm(30))
 
     if "desc_img_5" in data:
         if data["desc_img_5"] == "":
             pass
         else:
-            desc_img_5 = InlineImage(doc_aux, image_descriptor='app/static/' + data["desc_img_5"], width=Mm(50), height=Mm(30))
+            desc_img_5 = InlineImage(doc_aux, image_descriptor='/app/volums_fitxes_tecniques/static/' + data["desc_img_5"], width=Mm(50), height=Mm(30))
 
     descripcio = {"desc_img_0": desc_img_0,
                   "desc_img_1": desc_img_1,
@@ -215,15 +215,15 @@ def create_docx(data):
                   "desc_img_5": desc_img_5}
     context_desc = {"descripcio": descripcio}
     doc_aux.render(context=context_desc)
-    doc_aux.save("app/docx/" + report_name)
+    doc_aux.save("/app/volums_fitxes_tecniques/docx/" + report_name)
 
-    return "app/docx/" + report_name, data["codi_aux"]
+    return "/app/volums_fitxes_tecniques/docx/" + report_name, data["codi_aux"]
 
 
 def create_pdf(docx, report_name):
 
     path_docx = docx
-    path_pdf = "app/pdfs/" + report_name + ".pdf"
+    path_pdf = "/app/volums_fitxes_tecniques/pdfs/" + report_name + ".pdf"
 
     subprocess.run(["unoconv", "-f", "pdf", "-o", path_pdf, path_docx])
 
@@ -232,7 +232,7 @@ def zip_files(file, file_2, zip_name):
 
     arxius = [file, file_2]
     zip = zip_name + ".zip"
-    path_zip = "zips/" + zip
+    path_zip = "/app/volums_fitxes_tecniques/zips/" + zip
 
     with zipfile.ZipFile(path_zip, 'w') as arxiu_zip:
         for arxiu in arxius:
