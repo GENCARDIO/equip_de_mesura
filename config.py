@@ -3,8 +3,8 @@ import os
 main_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Production Antiguo
-# URL_GLOBAL = "http://172.16.78.83:8000/api_fastq/"
-# URL_HOME = "http://172.16.78.83:5000/"
+URL_GLOBAL = "http://172.16.78.83:8000/"
+URL_HOME = "http://172.16.78.83:5000/"
 
 # Production Nuevo
 # URL_HOME = "http://172.16.83.23:5000"
@@ -15,7 +15,7 @@ main_dir = os.path.dirname(os.path.abspath(__file__))
 # URL_GLOBAL = "http://172.16.82.47:8000/api_fastq/"
 
 # Develop Alex
-URL_HOME = "http://172.16.82.45:5000/"
+# URL_HOME = "http://172.16.82.45:5000/"
 # URL_GLOBAL = "http://172.16.82.45:8000/api_fastq/"
 
 
