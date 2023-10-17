@@ -33,51 +33,48 @@
 
         <div class="row">
             <!-- Título -->
-            <div class="col-12">
-                <h1 class="text-center"
-                    style="margin-top: 15px; font-weight: bold; background: linear-gradient(15deg, #357ca5 0%, #60cec1 100%); -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent;">
+            <div class="col-12 card card-body border-0 m-1" style="background-color:#EDEDED;">
+                <h1 style="font-weight: bold; color: rgb(26, 46, 138)">
                     HISTORIC
                 </h1>
-                <hr>
+            </div>
 
-                <!-- Taula -->
-                <div class="table-responsive">
-                    <table class="table table-bordered" style="text-align: center; width: 99%;" id="example">
-                        <thead style="background-image: linear-gradient(15deg, #357ca5 0%, #60cec1 100%);">
-                            <tr>
-                                <th>Codi</th>
-                                <th>Codi Hospital</th>
-                                <th>Tècnic</th>
-                                <th>Data Modificació</th>
-                                <th>Motiu Modificació</th>
-                                <th>Versió Doc</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for equip in equips %}
-                            <tr>
-                                <form action="/historic_pdf" method="post">
-                                    <input type="hidden" name="codi" value="{{equip.codi_aux}}">
+            <!-- Taula -->
+            <div class="table-responsive" style="width: 100%; margin-top: 30px;">
+                <table class="table table-bordered table-striped" style="text-align: center; width: 99%;" id="example">
+                    <thead style="background-image: linear-gradient(15deg, #181818 0%, #363636 100%); color: white;">
+                        <tr>
+                            <th>Codi</th>
+                            <th>Codi Hospital</th>
+                            <th>Tècnic</th>
+                            <th>Data Modificació</th>
+                            <th>Motiu Modificació</th>
+                            <th>Versió Doc</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for equip in equips %}
+                        <tr>
+                            <form action="/historic_pdf" method="post">
+                                <input type="hidden" name="codi" value="{{equip.codi_aux}}">
 
-                                    <td>{{equip.codi_aux}}</td>
-                                    <td>{{equip.codi_cgc}}</td>
-                                    <td>{{session["user"]}}</td>
-                                    <td>{{equip.data_modificacio}}</td>
-                                    <td>{{equip.motiu_modificacio}}</td>
-                                    <td>{{equip.versio_doc}}</td>
-                                    <td>
-                                        <button type="submit" style="background: none; border: none;">
-                                            <i class="fa-solid fa-file-pdf" style="color: #2ec242;"></i>
-                                        </button>
-                                    </td>
-                                </form>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-
+                                <td>{{equip.codi_aux}}</td>
+                                <td>{{equip.codi_cgc}}</td>
+                                <td>{{session["user"]}}</td>
+                                <td>{{equip.data_modificacio}}</td>
+                                <td>{{equip.motiu_modificacio}}</td>
+                                <td>{{equip.versio_doc}}</td>
+                                <td>
+                                    <button type="submit" style="background: none; border: none;">
+                                        <i class="fa-solid fa-file-pdf" style="color: #2ec242;"></i>
+                                    </button>
+                                </td>
+                            </form>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
 
         </div>

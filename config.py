@@ -3,11 +3,11 @@ import os
 main_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Production Antiguo
+URL_HOME = "http://172.16.78.83:5000/"
 # URL_GLOBAL = "http://172.16.78.83:8000/"
-# URL_HOME = "http://172.16.78.83:5000/"
 
 # Production Nuevo
-URL_HOME = "http://172.16.83.23:5000"
+# URL_HOME = "http://172.16.83.23:5000"
 # URL_GLOBAL = "http://172.16.83.23:8000/api_fastq/"
 
 # Develop Adria
