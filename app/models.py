@@ -7,9 +7,9 @@ from sqlalchemy import Column, String
 
 main_dir = os.path.dirname(os.path.dirname(__file__))
 
-# db_path = os.path.join(main_dir, "volums_fitxes_tecniques", "db", "fitxes_tecniques.db")
-db_path = os.path.join(main_dir, "fitxes_tecniques.db")
-print(db_path)
+db_path = os.path.join(main_dir, "volums_fitxes_tecniques", "db", "fitxes_tecniques.db")
+# db_path = os.path.join(main_dir, "fitxes_tecniques.db")
+# print(db_path)
 url = f"sqlite:///{db_path}"
 
 engine = create_engine(url, connect_args={"check_same_thread": False})
