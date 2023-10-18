@@ -31,14 +31,19 @@
         </div>
     </div>
 
-    <div class="container mt-4">
-        <h2 style="font-weight: bold;">Nou Equip</h2>
-        <hr>
-        <h3 style="margin-top: 5px; margin-bottom: 15px;"> Característiques generals de l'equip</h3>
+    <div class="container">
+        <div class="row" style="margin-bottom: 20px;">
+            <div class="card card-title" style="background-color:#EDEDED;">
+                <h2 style="font-weight: bold; color: darkblue; margin: 10px;">NOU EQUIP</h2>
+            </div>
+        </div>
+
         <form action="/afegir_equip" method="post">
 
-            <div class="row">
-                <div class="col-md-6">
+            <div class="row" style="margin-bottom: 10px;">
+                <h3> Característiques generals de l'equip</h3>
+
+                <div class="col-md-6 card card-body" style="background-color:#EDEDED;">
 
                     <div class="form-group">
                         <label>Codi Aux:</label>
@@ -64,7 +69,8 @@
                     </div>
 
                 </div>
-                <div class="col-md-6">
+
+                <div class="col-md-6 card card-body" style="background-color:#EDEDED;">
 
                     <div class="form-group">
                         <label>Codi CGC:</label>
@@ -93,9 +99,10 @@
 
             <br>
 
-            <h3 style="margin-top: 5px; margin-bottom: 15px;">Adquisició</h3>
-            <div class="row">
-                <div class="col-md-6">
+            <div class="row" style="margin-bottom: 10px;">
+                <h3>Adquisició</h3>
+
+                <div class="col-md-6 card card-body" style="background-color:#EDEDED;">
                     <div class="form-group">
                         <label>Data Alta:</label>
                         <input type="text" class="form-control" name="data_alta" placeholder="Introdueix la data alta">
@@ -118,7 +125,8 @@
                             placeholder="Introdueix la data baixa">
                     </div>
                 </div>
-                <div class="col-md-6">
+
+                <div class="col-md-6 card card-body" style="background-color:#EDEDED;">
                     <div class="form-group">
                         <label>Situació contractual:</label>
                         <input type="text" class="form-control" name="situacio_contractual"
@@ -144,11 +152,13 @@
                     </div>
                 </div>
             </div>
+
             <br>
 
-            <h3 style="margin-top: 5px; margin-bottom: 15px;">Característiques fisiques</h3>
-            <div class="row">
-                <div class="col-md-6">
+            <div class="row" style="margin-bottom: 10px;">
+                <h3 style="margin-top: 5px; margin-bottom: 15px;">Característiques fisiques</h3>
+
+                <div class="col-md-6 card card-body" style="background-color:#EDEDED;">
                     <div class="form-group">
                         <label>Amplada (cm):</label>
                         <input type="text" class="form-control" name="amplada" placeholder="Introdueix l'amplada en cm">
@@ -167,7 +177,8 @@
                         <input type="text" class="form-control" name="pes" placeholder="Introdueix el pes en kg">
                     </div>
                 </div>
-                <div class="col-md-6">
+
+                <div class="col-md-6 card card-body" style="background-color:#EDEDED;">
                     <div class="form-group">
                         <label>Condicions ambientals:</label>
                         <input type="text" class="form-control" name="condicions_ambientals"
@@ -188,11 +199,13 @@
                     </div>
                 </div>
             </div>
+
             <br>
 
-            <h3>Contacte</h3>
-            <div class="row">
-                <div class="col-md-6">
+            <div class="row" style="margin-bottom: 10px;">
+                <h3>Contacte</h3>
+
+                <div class="col-md-6 card card-body" style="background-color:#EDEDED;">
                     <div class="form-group">
                         <label>Contacte comercial:</label>
                         <input type="text" class="form-control" name="contacte_comercial"
@@ -204,7 +217,8 @@
                             placeholder="Introdueix el contacte tècnic">
                     </div>
                 </div>
-                <div class="col-md-6">
+
+                <div class="col-md-6 card card-body" style="background-color:#EDEDED;">
                     <div class="form-group">
                         <label>Observacions:</label>
                         <textarea class="form-control" name="observacions" rows="4"
@@ -212,7 +226,16 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" style="margin-bottom: 10px;" class="btn btn-primary">Enviar dades</button>
+
+            <br>
+
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Enviar
+                        dades</button>
+                </div>
+            </div>
+
         </form>
     </div>
 </body>
